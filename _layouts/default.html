@@ -1,160 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streamtime</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-    <style>
-        .fade-in { opacity: 0; }
-        .slide-up { transform: translateY(50px); opacity: 0; }
-    </style>
-</head>
-<body class="font-sans bg-gray-100">
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
-                        <span class="text-2xl font-bold text-indigo-600">Streamtime.ai</span>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <a href="#home" class="px-3 py-2 text-gray-700 hover:text-indigo-600">Home</a>
-                    <a href="#product" class="px-3 py-2 text-gray-700 hover:text-indigo-600">Product</a>
-                    <a href="#problems" class="px-3 py-2 text-gray-700 hover:text-indigo-600">Solutions</a>
-                    <!-- <a href="#screenshots" class="px-3 py-2 text-gray-700 hover:text-indigo-600">Screenshots</a> -->
-                    <a href="#cta" class="ml-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <section id="home" class="bg-indigo-600 text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold fade-in">Private cloud streaming platform</h1>
-            <p class="mt-4 text-lg md:text-xl fade-in">Deploy, manage and operate every flavour of Kafka, on your own servers.</p>
-            <a href="#cta" class="mt-6 inline-block px-6 py-3 bg-white text-indigo-600 font-semibold rounded-md hover:bg-gray-100 fade-in">Try Free Now</a>
-        </div>
-    </section>
+		{% seo %}
+		{% feed_meta %}
 
-    <section id="product" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-gray-800 text-center slide-up">What is Streamtime?</h2>
-            <p class="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto slide-up">Streamtime is a universal <em>management plane</em> for data streaming. You can use streamtime to run your own internal {kafka} <em> as a service</em>, on any infrastructure that supports Kubernetes. Run gigabyte scale workloads at a fraction of the cost of other managed services.</p>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center slide-up">
-                    <div class="text-indigo-600 text-4xl mb-4">📊</div>
-                    <h3 class="text-xl font-semibold">Analytics</h3>
-                    <p class="mt-2 text-gray-600">Gain insights with real-time data dashboards.</p>
-                </div>
-                <div class="text-center slide-up">
-                    <div class="text-indigo-600 text-4xl mb-4">🤝</div>
-                    <h3 class="text-xl font-semibold">Collaboration</h3>
-                    <p class="mt-2 text-gray-600">Seamless team communication and task management.</p>
-                </div>
-                <div class="text-center slide-up">
-                    <div class="text-indigo-600 text-4xl mb-4">⚙️</div>
-                    <h3 class="text-xl font-semibold">Automation</h3>
-                    <p class="mt-2 text-gray-600">Automate repetitive tasks to save time.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
+		<link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/stream-time.svg">
 
-    <section id="problems" class="py-16 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-gray-800 text-center slide-up">Problems We Solve</h2>
-            <p class="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto slide-up">Streamtime tackles common business challenges, helping you focus on growth.</p>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md slide-up">
-                    <h3 class="text-xl font-semibold text-gray-800">Inefficient Workflows</h3>
-                    <p class="mt-2 text-gray-600">Streamline processes with integrated tools, reducing manual work and errors.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md slide-up">
-                    <h3 class="text-xl font-semibold text-gray-800">Poor Team Coordination</h3>
-                    <p class="mt-2 text-gray-600">Centralize communication and tasks to keep everyone aligned.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md slide-up">
-                    <h3 class="text-xl font-semibold text-gray-800">Data Silos</h3>
-                    <p class="mt-2 text-gray-600">Unify data across departments for better decision-making.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md slide-up">
-                    <h3 class="text-xl font-semibold text-gray-800">Scalability Issues</h3>
-                    <p class="mt-2 text-gray-600">Grow seamlessly with our flexible, cloud-based infrastructure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="screenshots" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-gray-800 text-center slide-up">See Streamtime in Action</h2>
-            <p class="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto slide-up">Explore our user-friendly interface and powerful features.</p>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="slide-up">
-                    <img src="/asserts/images/infrastructure.png" alt="Streamtime Dashboard" class="rounded-lg shadow-md">
-                    <p class="mt-2 text-gray-600 text-center">Infrastructure</p>
-                </div>
-                <div class="slide-up">
-                    <img src="/asserts/images/infrastructure.png" alt="Streamtime Task Management" class="rounded-lg shadow-md">
-                    <p class="mt-2 text-gray-600 text-center">Kafka Cluster</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section id="cta" class="py-16 bg-indigo-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold fade-in">Ready to Transform Your Business?</h2>
-            <p class="mt-4 text-lg fade-in">Join thousands of companies using Streamtime to streamline their operations.</p>
-            <a href="#" class="mt-6 inline-block px-6 py-3 bg-white text-indigo-600 font-semibold rounded-md hover:bg-gray-100 fade-in">Start Your Free Trial</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <span class="text-xl font-bold">Streamtime</span>
-                <p class="mt-2 text-gray-400">© 2025 Streamtime. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Animation Script -->
-    <script>
-        // Fade-in animations
-        anime({
-            targets: '.fade-in',
-            opacity: [0, 1],
-            duration: 1000,
-            easing: 'easeOutQuad',
-            delay: anime.stagger(200)
-        });
-
-        // Slide-up animations
-        anime({
-            targets: '.slide-up',
-            translateY: [50, 0],
-            opacity: [0, 1],
-            duration: 1000,
-            easing: 'easeOutQuad',
-            delay: anime.stagger(200)
-        });
-
-        // Scroll-based animations
-        window.addEventListener('scroll', () => {
-            const elements = document.querySelectorAll('.slide-up, .fade-in');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    el.classList.add('animate');
-                }
-            });
-        });
-    </script>
-</body>
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<div class="company-name"><a href="{{ site.baseurl }}/">
+					<!-- <img src="{{ site.baseurl }}/images/logo.svg" alt="Streamtime Logo" width="95" height="33" /> -->
+					 Streamtime.ai
+				</a></div>
+				{% include navigation.html %}
+			</div>
+		</header>
+		{{ content }}
+		<footer>
+			<div class="container">
+				<p class="editor-link"><a href="cloudcannon:collections/_data/footer.yml" class="btn"><strong>&#9998;</strong> Edit footer</a></p>
+				<div class="footer-columns">
+					{% for column in site.data.footer %}
+					<ul class="footer-links">
+						{% for link in column.links %}
+							<li><a {% if link.new_window %}target="_blank"{% endif %} href="{% include relative-src.html src=link.link %}" {% if link.social_icon %}class="{{ link.social_icon }}-icon"{% endif %}>
+								{% if link.social_icon %}
+									{% include social-icon.html icon=link.social_icon %}
+								{% endif %}
+								{{ link.name }}</a></li>
+						{% endfor %}
+					</ul>
+					{% endfor %}
+				</div>
+				<p class="copyright">&copy; {{ site.time | date: '%Y' }} MyApp Ltd. • <a href="#">Terms</a> &amp; <a href="#">Privacy</a> • <a href="https://cloudcannon.com/">Template by CloudCannon</a></p>
+			</div>
+		</footer>
+		<script>
+			document.getElementById("open-nav").onclick = function () {
+				document.body.classList.toggle("nav-open");
+				return false;
+			};
+		</script>
+	</body>
 </html>
