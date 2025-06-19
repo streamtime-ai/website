@@ -12,12 +12,13 @@ description: A private cloud platform for streaming data.
     <div class="cta button alt">
       <a href="{{ site.baseurl }}/contact/">Get a guided trial</a>
     </div>
-    <div>
+    <div class="play-button-container" onclick="openModal()">
       <img
         src="{{ site.baseurl }}/images/osk-strimzi.png"
         alt="Screenshot"
-        class="screenshot editable"
+         class="play-button-image"
       />
+       <div class="play-button-overlay"></div>
     </div>
   </div>
 </section>
@@ -58,7 +59,7 @@ description: A private cloud platform for streaming data.
       </div>
       <div class="image">
         <img
-          src="{{ site.baseurl }}/images/deploy.png"
+          src="{{ site.baseurl }}/images/cluster-workload.png"
           alt="Screenshot"
           class="screenshot editable"
         />
@@ -139,3 +140,34 @@ description: A private cloud platform for streaming data.
     <div class="button alt"><a href="#">Contact us for a trial</a></div>
   </section>
 </div>
+
+
+
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <div class="close-container">
+      <span class="close" onclick="closeModal()">&times;</span>
+    </div>
+    
+    <iframe src="https://drive.google.com/file/d/14DSyCSlUinMYsl1Az6TWqWHdVRzG015S/preview" class="demo-video" allow="autoplay"></iframe>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    document.getElementById("videoModal").style.display = "block";
+  }
+
+  // Close the modal
+  function closeModal() {
+    document.getElementById("videoModal").style.display = "none";
+  }
+
+  // Close the modal if the user clicks outside the modal content
+  window.onclick = function (event) {
+    var modal = document.getElementById("videoModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+</script>

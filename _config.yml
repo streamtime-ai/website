@@ -8,6 +8,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: streamtime-ai
 github_username:  streamtime-ai
+form_url: "https://script.google.com/macros/s/AKfycbyPCGRAnnJAeB4VfgwmIgm3tCQwp1FfxB_hPYCqt7NcG-ewK6ODqgbP-Pdc5mzsIH36/exec"
 
 
 google_analytics_key:
