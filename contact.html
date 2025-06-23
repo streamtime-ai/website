@@ -11,8 +11,9 @@ map:
 ---
 <!-- <div class="map" id="map"></div> -->
 
-
+<div id="form-message" class="form-message" style="display:  block;"></div>
 <div class="contact-box">
+
 	<form  id="contact-form" class="contact-form">
     <label for="name">Full Name</label>
     <input type="text" name="name" id="name" placeholder="Enter your name..." required />
@@ -29,7 +30,10 @@ map:
     <label for="message">Message</label>
     <textarea name="message" id="message" placeholder="Enter your message..." required></textarea>
 
-    <input type="submit" value="Send Message" />
+    <button type="submit" id="submit-btn">
+      <span class="btn-text">Send Message</span>
+      <span class="spinner" style="display: none;"></span>
+    </button>
 	</form>
 
 	<div class="contact-details">
@@ -46,11 +50,22 @@ map:
   document.getElementById("contact-form").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
+    const submitBtn = document.getElementById("submit-btn");
+    const spinner = submitBtn.querySelector(".spinner");
+    const btnText = submitBtn.querySelector(".btn-text");
+    const messageBox = document.getElementById("form-message");
+    submitBtn.disabled = true;
+    spinner.style.display = "inline-block";
+    btnText.textContent = "Sending...";
+
+
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const email = document.getElementById("email").value;
     const company = document.getElementById("company").value;
     const message = document.getElementById("message").value;
+   
+
 
     const data = {
       name: name,
@@ -60,19 +75,36 @@ map:
       message: message
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbzuNsPTYnAFl0lS0F2KhwXTysV9Kvm_huw5WKRiuUb9376Yc-vgqUgPAaPjDhU9LyG2/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyUDYc0WONTqMjfwbnWk7DuuWl5Og2qyLgFVnRHbb7_v9uq_4p8gBya9USv88v2hl4l/exec", {
       method: "POST",
       headers: {
-        "Content-Type": "application/text",
+        "Content-Type": "text/plain",
       },
       body: JSON.stringify(data),
     })
-    .then(response => response.json())
-    .then(data => {
+    .then(response => {
+      
+      if(response.ok){
       document.getElementById("contact-form").reset();
+      messageBox.textContent = "✅ Message sent successfully!";
+      messageBox.className = "form-message success";
+      messageBox.style.display = "block";
+      
+      } else{
+        throw Error("Failed to submit form")
+      }
     })
+
     .catch(error => {
       console.error("Error:", error);
+      messageBox.textContent = "❌ Something went wrong. Please try again.";
+      messageBox.className = "form-message error";
+      messageBox.style.display = "block";
+    }).finally(()=>{
+      submitBtn.disabled = false;
+      spinner.style.display = "none";
+      btnText.textContent = "Send Message";
+      setTimeout(()=>messageBox.style.display="none",5000);
     });
   });
 </script>
