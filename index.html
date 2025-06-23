@@ -148,8 +148,26 @@ description: A private cloud platform for streaming data.
     <div class="close-container">
       <span class="close" onclick="closeModal()">&times;</span>
     </div>
-    
-    <iframe src="https://drive.google.com/file/d/1JaTXqizEnFhGTaBE8GeQxSq--XWnr_GA/preview" class="demo-video" allow="autoplay"></iframe>
+    <video
+    id="my-video"
+    class="video-js demo-video"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+    <source src="{{ site.baseurl }}/asserts/videos/stream-time.webm" type="video/webm" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
+    <!-- <iframe src="https://drive.google.com/file/d/1JaTXqizEnFhGTaBE8GeQxSq--XWnr_GA/preview" class="demo-video" allow="autoplay"></iframe> -->
      
   </div>
 </div>
