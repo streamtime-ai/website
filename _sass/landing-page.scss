@@ -48,7 +48,7 @@
 		@include flexbox;
 		align-items:start;
 		flex-direction: row;
-
+		gap: 3rem;
 		.text, .image {
 			-webkit-flex: 1;
 			flex: 1;
@@ -62,45 +62,45 @@
 }
 
 
-@media #{$desktop} {
-	.flex {
-		@include flexbox;
-		align-items: start;
-		flex-direction: row;
+	@media #{$desktop} {
+		.flex {
+			@include flexbox;
+			align-items: start;
+			flex-direction: row;
+			gap: 3rem;
+			.text, .image {
+				-webkit-flex: 1;
+				flex: 1;
+				padding: 0 20px;
+			}
+		}
 
-		.text, .image {
-			-webkit-flex: 1;
-			flex: 1;
-			padding: 0 20px;
+		.content section:nth-child(even) .flex {
+			flex-direction: row-reverse;
+		}
+		.content section:nth-child(even) .flex {
+			flex-direction: row-reverse;
+		}
+		
+		.demo-video{
+			width: 680px !important;
+			height: 480px !important;
 		}
 	}
 
-	.content section:nth-child(even) .flex {
-		flex-direction: row-reverse;
+	@media (min-width:998px) {
+		
+		.demo-video{
+			width: 992px !important;
+			height: 508px !important;
+		}
+		section{
+		.container{
+			min-height: 380px;
+		}
 	}
-	.content section:nth-child(even) .flex {
-		flex-direction: row-reverse;
-	}
-	
-	.demo-video{
-		width: 680px !important;
-		height: 480px !important;
-	}
-}
 
-@media (min-width:998px) {
-	
-	.demo-video{
-		width: 992px !important;
-		height: 508px !important;
 	}
-	section{
-	.container{
-		min-height: 380px;
-	}
-}
-
-}
 
 @media #{$mid-point}{
 	.modal-content{
