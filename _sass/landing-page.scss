@@ -46,7 +46,7 @@
 @media #{$desktop} {
 	.flex {
 		@include flexbox;
-		align-items: center;
+		align-items:start;
 		flex-direction: row;
 
 		.text, .image {
@@ -65,7 +65,7 @@
 @media #{$desktop} {
 	.flex {
 		@include flexbox;
-		align-items: center;
+		align-items: start;
 		flex-direction: row;
 
 		.text, .image {
@@ -96,7 +96,7 @@
 	}
 	section{
 	.container{
-		min-height: 480px;
+		min-height: 380px;
 	}
 }
 
@@ -164,39 +164,4 @@
 	display: flex;
 	justify-content: end;
 	padding-bottom: 10px;
-}
-
-// play button style
-.play-button-container {
-    position: relative;
-    text-align: center;
-}
-
-.play-button-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    cursor: pointer;
-}
-
-.play-button-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px; /* Adjust the size of the play button overlay */
-    height: 80px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.play-button-overlay::after {
-    content: '▶️'; /* Unicode character for play button */
-    font-size: 36px;
-    color: #fff;
 }
