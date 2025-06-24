@@ -29,7 +29,9 @@ map:
 
     <label for="message">Message</label>
     <textarea name="message" id="message" placeholder="Enter your message..." required></textarea>
-
+    <div id="captcha-wrapper">
+      <div class="g-recaptcha" data-sitekey="{{site.captcha_site_key}}"></div>
+    </div>
     <button type="submit" id="submit-btn">
       <span class="btn-text">Send Message</span>
       <span class="spinner" style="display: none;"></span>
@@ -49,6 +51,16 @@ map:
 <script>
   document.getElementById("contact-form").addEventListener("submit", function(event) {
     event.preventDefault(); 
+
+    const captchaWrapper = document.getElementById("captcha-wrapper");
+    const response = grecaptcha.getResponse();
+    if (!response) {
+        event.preventDefault();
+        captchaWrapper.classList.add("error");
+        return false;
+      }
+
+    captchaWrapper.classList.remove("error");
 
     const submitBtn = document.getElementById("submit-btn");
     const spinner = submitBtn.querySelector(".spinner");
@@ -108,3 +120,6 @@ map:
     });
   });
 </script>
+
+<!-- reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

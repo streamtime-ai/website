@@ -9,7 +9,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: streamtime-ai
 github_username:  streamtime-ai
 form_url: "https://script.google.com/macros/s/AKfycbyPCGRAnnJAeB4VfgwmIgm3tCQwp1FfxB_hPYCqt7NcG-ewK6ODqgbP-Pdc5mzsIH36/exec"
-
+captcha_site_key: "6Leaq2srAAAAAJTYz6ek7aJ_LV7qCZEeEgZxxlpd"
 
 google_analytics_key:
 google_maps_javascript_api_key:
