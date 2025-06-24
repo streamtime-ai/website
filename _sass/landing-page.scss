@@ -112,11 +112,18 @@
 	}
 }
 
-@media (max-width:619px) {
+@media (min-width:406px) and (max-width:619px) {
 	
 	.demo-video{
-		width: 405px !important;
-    	height: 264px !important;
+		width: 380px !important;
+    	height: 256px !important;
+	}
+}
+
+@media (max-width:405px) {
+	.demo-video{
+		width: 296px !important;
+    	height: 214px !important;
 	}
 }
 
