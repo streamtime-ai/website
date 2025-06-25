@@ -3,15 +3,9 @@
     link: /
   - name: Features
     link: /#features
-<<<<<<< HEAD
-  - name: Docs
-    link: https://docs.streamtime.ai/
-    new_window: true
-=======
 #  - name: Docs
 #    link: https://docs.streamti.me/
 #    new_window: true
->>>>>>> 1201f6c (up content)
   - name: Contact
     link: /contact/
 # - links:
