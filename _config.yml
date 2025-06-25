@@ -2,7 +2,7 @@
 # Site
 
 title: Streamtime
-email: infol@streamtime.ai
+email: info@streamtime.ai
 description: Streamtime is a universal management plane to manage your kafka clusters.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
