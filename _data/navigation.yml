@@ -6,17 +6,10 @@
   link: /#features
   new_window: false
   highlight: false
-<<<<<<< HEAD
-- name: Docs
-  link: https://docs.streamtime.ai/
-  new_window: true
-  highlight: false
-=======
 #- name: Docs
 #  link: https://docs.streamti.me/
 #  new_window: true
 #  highlight: false
->>>>>>> 1201f6c (up content)
 - name: Contact
   link: /contact/
   new_window: false
