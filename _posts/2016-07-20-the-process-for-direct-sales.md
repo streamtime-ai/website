@@ -1,35 +1,54 @@
 ---
-date: 2020-07-20
-title: The process for direct sales
+date: 2025-06-30
+title: Direct Cluster Access and Endpoint Routing
 categories:
-  - sales
-author_staff_member: anna
+  - platform-features
+author_staff_member: p6
 ---
 
-Direct selling is the marketing and selling of products directly to consumers away from a fixed retail location. Peddling is the oldest form of direct selling. Modern direct selling includes sales made through the party plan, one-on-one demonstrations, and other personal contact arrangements as well as internet sales.
+Direct cluster access lets you securely expose Kafka endpoints for clients without tunneling, jumpboxes, or custom DNS setups.
 
-![Checkmate](https://source.unsplash.com/random/1500x1145)
+![Kafka Network](https://source.unsplash.com/random/1500x1145)
 
-## Textbook definition
+## What is Direct Cluster Access?
 
-A textbook definition is: "The direct personal presentation, demonstration, and sale of products and services to consumers, usually in their homes or at their jobs."
+It provides an out-of-the-box way to connect Kafka clients (like producers and consumers) directly to a deployed cluster from external VPCs or the internet, based on your configuration.
 
-## How effective is direct selling?
+This means:
+- DNS resolution just works (`bootstrap.cluster.yourdomain.com`)
+- No need to manage custom DNS zones or ALB listener rules
+- Works with both internal and external modes
 
-Industry representative, the World Federation of Direct Selling Associations (WFDSA), reports that its 59 regional member associations accounted for more than US$183 billion in retail sales in 2014, through the activities of more than 62 million independent sales representatives. The United States Direct Selling Association (DSA) reported that in 2000, 55% of adult Americans had at some time purchased goods or services from a direct selling representative and 20% reported that they were currently(6%) or had been in the past(14%) a direct selling representative.
+## Use Cases
 
-![Office](https://source.unsplash.com/random/1500x1146)
+- Connecting external Flink or Spark apps
+- Streaming from edge devices
+- Accessing Kafka from hybrid cloud apps
 
-According to the WFDSA, consumers benefit from direct selling because of the convenience and service it provides, including personal demonstration and explanation of products, home delivery, and generous satisfaction guarantees. In contrast to franchising, the cost for an individual to start an independent direct selling business is typically very low with little or no required inventory or other cash commitments to begin.
+## Network Isolation Modes
 
-Most direct selling associations around the world require their members to abide by a code of conduct towards a fair partnership both with customers and salesmen...
+| Mode      | Description                            |
+|-----------|----------------------------------------|
+| internal  | Only within the same VPC or peered VPC |
+| external  | Public-facing access via internet      |
 
-Most national direct selling associations are represented in the World Federation of Direct Selling Associations (WFDSA).
+You can toggle this in the advanced configuration during cluster creation.
 
-## How's it different to marketing?
+![Access Modes](https://source.unsplash.com/random/1500x1146)
 
-Direct selling is distinct from direct marketing because it is about individual sales agents reaching and dealing directly with clients. Direct marketing is about business organizations seeking a relationship with their customers without going through an agent/consultant or retail outlet.
+## How It Works
 
-Direct selling consists of two main business models: single-level marketing, in which a direct seller makes money by buying products from a parent organization and selling them directly to customers, and multi-level marketing (also known as network marketing or person-to-person marketing), in which the direct seller makes money from both direct sales to customers and by sponsoring new direct sellers and earning a commission from their efforts.
+Under the hood, the platform:
+- Provisions a secure LoadBalancer
+- Assigns DNS via the control plane
+- Configures listener rules and port mappings
 
-![Raspberries](https://source.unsplash.com/random/1500x1147)
+All without needing a separate ingress controller or custom network policy.
+
+## Recommendations
+
+- Always use TLS encryption.
+- Rotate bootstrap endpoints during auto-upgrades.
+- Monitor access logs via the diagnostics tab.
+
+![TLS Setup](https://source.unsplash.com/random/1500x1147)

@@ -6,6 +6,10 @@
   link: /#features
   new_window: false
   highlight: false
+- name: Posts
+  link: /platform-features
+  new_window: false
+  highlight: false
 #- name: Docs
 #  link: https://docs.streamti.me/
 #  new_window: true
@@ -14,10 +18,7 @@
   link: /contact/
   new_window: false
   highlight: false
-# - name: Login
-#   link: /
-#   new_window: true
-#   highlight: false
+
 # - name: Sign Up
 #   link: /
 #   new_window: true
