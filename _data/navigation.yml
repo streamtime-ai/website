@@ -6,10 +6,10 @@
   link: /#features
   new_window: false
   highlight: false
-- name: Posts
-  link: /platform-features
-  new_window: false
-  highlight: false
+#- name: Posts
+#  link: /platform-features
+#  new_window: false
+#  highlight: false
 #- name: Docs
 #  link: https://docs.streamti.me/
 #  new_window: true
