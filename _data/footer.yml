@@ -4,9 +4,9 @@
   - name: Features
     link: /#features
 
-  - name: Posts
-    link: /platform-features
-#  - name: Docs
+#  - name: Posts
+#    link: /platform-features
+##  - name: Docs
 #    link: https://docs.streamti.me/
 #    new_window: true
   - name: Contact
