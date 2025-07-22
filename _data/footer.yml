@@ -3,12 +3,9 @@
     link: /
   - name: Features
     link: /#features
-
-#  - name: Posts
-#    link: /platform-features
-##  - name: Docs
-#    link: https://docs.streamti.me/
-#    new_window: true
+  - name: Docs
+    link: https://docs.streamtime.ai/
+    new_window: true
   - name: Contact
     link: /contact/
 # - links:
