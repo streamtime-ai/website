@@ -397,37 +397,20 @@
 }
 
 .architecture-placeholder {
-	align-items: stretch;
 	background:
 		linear-gradient(135deg, rgba(11, 35, 71, .04), rgba(29, 114, 172, .1));
-	border: 1px dashed rgba(11, 35, 71, .22);
+	border: 1px solid rgba(11, 35, 71, .12);
 	border-radius: 28px;
 	box-shadow: 0 22px 60px rgba(11, 35, 71, .08);
 	box-sizing: border-box;
-	display: grid;
-	gap: 14px;
-	min-height: 260px;
 	padding: 24px;
 }
 
-.architecture-node {
-	align-items: center;
-	background: rgba(255, 255, 255, .9);
-	border: 1px solid rgba(11, 35, 71, .1);
+.architecture-image {
 	border-radius: 18px;
-	color: $brand-color;
-	display: flex;
-	font-weight: 700;
-	justify-content: center;
-	min-height: 72px;
-	padding: 16px;
-	text-align: center;
-}
-
-.architecture-flow {
-	background: rgba(29, 114, 172, .3);
-	border-radius: 999px;
-	min-height: 4px;
+	display: block;
+	height: auto;
+	width: 100%;
 }
 
 @media #{$desktop} {
@@ -517,16 +500,6 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
-	.architecture-placeholder {
-		align-items: center;
-		grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr) 48px minmax(0, 1fr) 48px minmax(0, 1fr);
-		min-height: 280px;
-	}
-
-	.architecture-flow {
-		height: 4px;
-		min-height: 0;
-	}
 }
 
 @media (min-width:998px) {
