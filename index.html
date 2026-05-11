@@ -8,7 +8,8 @@ description: Sovereign Streaming Platform.
     <div class="hero-copy">
       <p class="eyebrow editable">Sovereign Streaming Platform</p>
       <h1 class="editable">
-        Fully managed streaming platform, with complete data-residency and controls. Bring your own infrastructure. Cloud, Data Center and Edge.
+        Fully managed streaming platform, with complete data-residency and controls.<br>
+        <span class="hero-secondary-line">Bring your own infrastructure: Cloud, Data Center or Edge.</span>
       </h1>
       <div class="cta button alt">
         <a href="{{ site.baseurl }}/contact/">Contact us for a trial</a>
@@ -68,10 +69,10 @@ description: Sovereign Streaming Platform.
         <article class="feature-card editable">
           <span class="card-icon icon-premium" aria-hidden="true"></span>
           <span class="card-kicker">Pricing drag</span>
-          <h3>Managed streaming pricing punishes sleepy workloads.</h3>
+          <h3>Managed Kafka cost escalates in every usage pattern.</h3>
           <p>
-            Public cloud services charge complicated premiums even when clusters are tiny,
-            quiet or serving long-tail internal teams.
+            Tiny, sleepy clusters pay a premium; at scale, the price becomes unpalatable.
+            In between, enterprise sales premiums still make managed Kafka expensive.
           </p>
         </article>
         <article class="feature-card editable">
@@ -129,14 +130,14 @@ description: Sovereign Streaming Platform.
     <div class="container flex">
       <div class="text editable">
         <p class="eyebrow">Time to production-grade cluster</p>
-        <h2>5 minutes to a production-grade Kafka cluster.</h2>
+        <h2>5 minutes to a production-grade cluster, like the cloud.</h2>
         <p>
-          Launch any flavor of Kafka, including OSS and commercial distributions on a
-          bring-your-own-license basis, through a self-service workflow.
+          Package the Kafka ecosystem in one box: Apache Kafka, Apache Flink,
+          Kafka Connect and more, delivered through a self-service workflow.
         </p>
         <p>
-          Give teams the distribution they need without turning every request into a
-          bespoke platform project.
+          Give teams production-grade streaming infrastructure without turning every
+          request into a bespoke platform project.
         </p>
       </div>
       <div class="image">
@@ -158,15 +159,135 @@ description: Sovereign Streaming Platform.
   <section>
     <div class="container flex">
       <div class="text editable">
-        <p class="eyebrow">Deployed on your own fleet</p>
-        <h2>Bootstrapped and optimized for Kafka and other workloads on Kubernetes.</h2>
+        <p class="eyebrow">Right-sized economics</p>
+        <h2>Automatic right-sizing and predictable costs.</h2>
         <p>
-          Deploy on your own fleet, across cloud, data center and edge environments,
-          using Streamtime Agent and Streamtime Operator.
+          Run physical single-tenant, multi-tenant or virtual clusters with capacity
+          aligned to real workload demand.
         </p>
         <p>
-          Streamtime prepares the Kubernetes substrate for real-time data workloads while
-          keeping infrastructure ownership and residency with you.
+          Empirically validate and benchmark your baseline performance profile before
+          teams depend on it in production.
+        </p>
+      </div>
+      <div class="image">
+        <div class="media-popout image-popout">
+          <img
+            src="{{ site.baseurl }}/images/chargeback.png"
+            alt="Streamtime right-sizing and cost profile screen"
+            class="screenshot editable"
+          />
+          <button class="video-trigger compact" type="button" onclick="openModal()">
+            <span class="play-icon" aria-hidden="true"></span>
+            <span>Watch flow</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container flex">
+      <div class="text editable">
+        <p class="eyebrow">AI-assisted SRE</p>
+        <h2>AI-assisted SRE and Day 2 operations.</h2>
+        <p>
+          Use our health agent or connect your own model to Streamtime MCP to handle
+          and triage incident alerts.
+        </p>
+        <p>
+          Reason deeply about infrastructure metrics, logs and patterns across your
+          fleet at every level of the stack.
+        </p>
+      </div>
+      <div class="image">
+        <div class="media-popout image-popout">
+          <img
+            src="{{ site.baseurl }}/images/ai-agent.jpeg"
+            alt="Streamtime AI operations assistant"
+            class="screenshot editable"
+          />
+          <button class="video-trigger compact" type="button" onclick="openModal()">
+            <span class="play-icon" aria-hidden="true"></span>
+            <span>Watch flow</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-us-section">
+    <div class="container flex">
+      <div class="text editable">
+        <p class="eyebrow">Over-the-air updates</p>
+        <h2>Automatic over-the-air updates for the fleet.</h2>
+        <p>
+          Schedule routine upgrades across clusters with automatic zero-downtime
+          rollouts during your configured maintenance windows.
+        </p>
+        <p>
+          Roll back safely when needed, while preserving the operational experience
+          platform teams expect from a managed service.
+        </p>
+      </div>
+      <div class="image">
+        <div class="media-popout image-popout">
+          <img
+            src="{{ site.baseurl }}/images/upgrade.png"
+            alt="Streamtime upgrade operations screen"
+            class="screenshot editable"
+          />
+          <button class="video-trigger compact" type="button" onclick="openModal()">
+            <span class="play-icon" aria-hidden="true"></span>
+            <span>Watch flow</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container flex">
+      <div class="text editable">
+        <p class="eyebrow">Cost attribution</p>
+        <h2>Granular cost attribution and chargeback across the enterprise.</h2>
+        <p>
+          Attribute platform spend by workload, team, tenant and environment with
+          usage data that finance and engineering can both understand.
+        </p>
+        <p>
+          Support internal billing and chargeback without reverse-engineering opaque
+          managed-service invoices.
+        </p>
+      </div>
+      <div class="image">
+        <div class="media-popout image-popout">
+          <img
+            src="{{ site.baseurl }}/images/chargeback.png"
+            alt="Streamtime chargeback analytics screen"
+            class="screenshot editable"
+          />
+          <button class="video-trigger compact" type="button" onclick="openModal()">
+            <span class="play-icon" aria-hidden="true"></span>
+            <span>Watch flow</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container flex">
+      <div class="text editable">
+        <p class="eyebrow">Bring your own infrastructure</p>
+        <h2>Powered by a Kubernetes-backed fleet you own.</h2>
+        <p>
+          Bootstrap within minutes on your own cloud, data center or edge fleet.
+          No complex networking patterns required.
+        </p>
+        <p>
+          Everything runs within your perimeter, with Streamtime Agent and Operator
+          preparing the Kubernetes substrate for real-time workloads.
         </p>
       </div>
       <div class="image">
@@ -188,22 +309,22 @@ description: Sovereign Streaming Platform.
   <section>
     <div class="container flex">
       <div class="text editable">
-        <p class="eyebrow">Tenancy and economics</p>
-        <h2>Configurable tenancy and performance profiles with automatic right-sizing.</h2>
+        <p class="eyebrow">BYO-everything</p>
+        <h2>Bring your own licenses, domains, OIDC providers and tools.</h2>
         <p>
-          Choose the tenancy model and performance profile each workload needs, then let
-          Streamtime right-size the fleet against real demand.
+          Integrate deeply with the platforms your enterprise already uses: licenses,
+          identity providers, domains, certificates, observability and automation.
         </p>
         <p>
-          Keep pricing predictable by aligning capacity, SLOs and team-level consumption
-          instead of paying public-cloud premiums for idle or sleepy clusters.
+          Keep the operating model flexible while standardizing the streaming experience
+          across teams.
         </p>
       </div>
       <div class="image">
         <div class="media-popout image-popout">
           <img
-            src="{{ site.baseurl }}/images/chargeback.png"
-            alt="Streamtime chargeback analytics screen"
+            src="{{ site.baseurl }}/images/bootstrap-provider.png"
+            alt="Streamtime enterprise integration screen"
             class="screenshot editable"
           />
           <button class="video-trigger compact" type="button" onclick="openModal()">
@@ -242,67 +363,6 @@ description: Sovereign Streaming Platform.
             quality, root cause analysis and operational accountability matter.
           </p>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container flex">
-      <div class="text editable">
-        <p class="eyebrow">Kubernetes operations</p>
-        <h2>Simplified fleet infrastructure operations on Kubernetes.</h2>
-        <p>
-          Deploy across cloud providers, private cloud or bare metal anywhere Kubernetes
-          runs, using the Streamtime Agent and Operator to keep infrastructure lifecycle
-          work consistent.
-        </p>
-        <p>
-          Manage upgrades, rollouts, SLO awareness, logs, metrics and performance trends
-          from one control plane instead of stitching together one-off scripts.
-        </p>
-      </div>
-      <div class="image">
-        <div class="media-popout image-popout">
-          <img
-            src="{{ site.baseurl }}/images/bootstrap-provider.png"
-            alt="Streamtime provider bootstrap screen"
-            class="screenshot editable"
-          />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
-            <span class="play-icon" aria-hidden="true"></span>
-            <span>Watch flow</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container flex">
-      <div class="text editable">
-        <p class="eyebrow">Telemetry and AI Ops</p>
-        <h2>Operate with confidence and deep insight into your systems.</h2>
-        <p>
-          Consume automated alerts and telemetry, validate performance profiles empirically
-          and predict incidents before they interrupt teams.
-        </p>
-        <p>
-          Streamtime AI Ops helps triage alerts with real fleet context, so operators can
-          move from noise to diagnosis faster.
-        </p>
-      </div>
-      <div class="image">
-        <div class="media-popout image-popout">
-          <img
-            src="{{ site.baseurl }}/images/ai-agent.jpeg"
-            alt="Streamtime AI operations assistant"
-            class="screenshot editable"
-          />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
-            <span class="play-icon" aria-hidden="true"></span>
-            <span>Watch flow</span>
-          </button>
-        </div>
       </div>
     </div>
   </section>
