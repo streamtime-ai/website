@@ -406,7 +406,6 @@ description: Sovereign Streaming Platform.
       poster="{{ site.baseurl }}/images/osk-strimzi.png"
       data-setup="{}"
     >
-      <source id="modal-video-mp4" src="{{ site.baseurl }}/assets/videos/stream-time.mp4" type="video/mp4" />
       <source id="modal-video-webm" src="{{ site.baseurl }}/assets/videos/stream-time.webm" type="video/webm" />
 
       <p class="vjs-no-js">
@@ -434,7 +433,6 @@ description: Sovereign Streaming Platform.
     var name = cleanVideoName(videoName);
     var title = videoTitle || defaultVideoTitle;
     var sources = [
-      { src: videoBasePath + name + ".mp4", type: "video/mp4" },
       { src: videoBasePath + name + ".webm", type: "video/webm" }
     ];
 
@@ -451,8 +449,7 @@ description: Sovereign Streaming Platform.
       }
       player.trigger("resize");
     } else {
-      document.getElementById("modal-video-mp4").src = sources[0].src;
-      document.getElementById("modal-video-webm").src = sources[1].src;
+      document.getElementById("modal-video-webm").src = sources[0].src;
       document.getElementById("modal-video").load();
     }
   }
