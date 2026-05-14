@@ -127,7 +127,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime cluster workload screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
+          <button class="video-trigger compact" type="button" onclick="openModal('kafkacluster', 'Cluster Workload Flow')">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -157,7 +157,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime right-sizing and cost profile screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
+          <button class="video-trigger compact" type="button" onclick="openModal('performance', 'Right-sizing Flow')">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -187,7 +187,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime AI operations assistant"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
+          <button class="video-trigger compact" type="button" onclick="openModal('stream-time', 'AI Operations Flow')">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -217,7 +217,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime upgrade operations screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
+          <button class="video-trigger compact" type="button" onclick="openModal('stream-time', 'Upgrade Operations Flow')">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -247,7 +247,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime chargeback analytics screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
+          <button class="video-trigger compact" type="button" onclick="openModal('stream-time', 'Chargeback Analytics Flow')">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -277,7 +277,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime provider bootstrap screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
+          <button class="video-trigger compact" type="button" onclick="openModal('fleet', 'Provider Bootstrap Flow')">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -307,7 +307,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime enterprise integration screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal()">
+          <button class="video-trigger compact" type="button" onclick="openModal('stream-time', 'Enterprise Integration Flow')">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -393,6 +393,7 @@ description: Sovereign Streaming Platform.
 <div id="videoModal" class="modal">
   <div class="modal-content">
     <div class="close-container">
+      <h3 id="modal-video-title" class="modal-video-title">Streamtime Demo</h3>
       <span class="close" onclick="closeModal()">&times;</span>
     </div>
     <video
@@ -405,8 +406,8 @@ description: Sovereign Streaming Platform.
       poster="{{ site.baseurl }}/images/osk-strimzi.png"
       data-setup="{}"
     >
-      <source src="{{ site.baseurl }}/assets/videos/stream-time.mp4" type="video/mp4" />
-      <source src="{{ site.baseurl }}/assets/videos/stream-time.webm" type="video/webm" />
+      <source id="modal-video-mp4" src="{{ site.baseurl }}/assets/videos/stream-time.mp4" type="video/mp4" />
+      <source id="modal-video-webm" src="{{ site.baseurl }}/assets/videos/stream-time.webm" type="video/webm" />
 
       <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a
@@ -418,12 +419,52 @@ description: Sovereign Streaming Platform.
 </div>
 
 <script>
-  function openModal() {
+  var defaultVideoName = "stream-time";
+  var defaultVideoTitle = "Streamtime Demo";
+  var videoBasePath = "{{ site.baseurl }}/assets/videos/";
+
+  function cleanVideoName(videoName) {
+    var fallback = defaultVideoName;
+    var name = videoName || fallback;
+
+    return /^[a-zA-Z0-9_-]+$/.test(name) ? name : fallback;
+  }
+
+  function openModal(videoName, videoTitle) {
+    var name = cleanVideoName(videoName);
+    var title = videoTitle || defaultVideoTitle;
+    var sources = [
+      { src: videoBasePath + name + ".mp4", type: "video/mp4" },
+      { src: videoBasePath + name + ".webm", type: "video/webm" }
+    ];
+
+    document.getElementById("modal-video-title").textContent = title;
+
     document.getElementById("videoModal").style.display = "block";
+
+    if (window.videojs) {
+      var player = videojs("modal-video");
+
+      player.src(sources);
+      if (typeof player.load === "function") {
+        player.load();
+      }
+      player.trigger("resize");
+    } else {
+      document.getElementById("modal-video-mp4").src = sources[0].src;
+      document.getElementById("modal-video-webm").src = sources[1].src;
+      document.getElementById("modal-video").load();
+    }
   }
 
   // Close the modal
   function closeModal() {
+    if (window.videojs) {
+      videojs("modal-video").pause();
+    } else {
+      document.getElementById("modal-video").pause();
+    }
+
     document.getElementById("videoModal").style.display = "none";
   }
 
