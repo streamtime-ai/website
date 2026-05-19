@@ -127,7 +127,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime cluster workload screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal('kafkacluster', 'Cluster Workload Flow')">
+          <button class="video-trigger compact" type="button" onclick="openModal('kafkacluster', 'Cluster Workload Flow', this)">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -157,7 +157,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime right-sizing and cost profile screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal('performance', 'Right-sizing Flow')">
+          <button class="video-trigger compact" type="button" onclick="openModal('performance', 'Right-sizing Flow', this)">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -187,7 +187,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime AI operations assistant"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal('ai-agent', 'AI Operations Flow')">
+          <button class="video-trigger compact" type="button" onclick="openModal('ai-agent', 'AI Operations Flow', this)">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -217,7 +217,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime upgrade operations screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal('upgrades', 'Upgrade Operations Flow')">
+          <button class="video-trigger compact" type="button" onclick="openModal('upgrades', 'Upgrade Operations Flow', this)">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -247,7 +247,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime chargeback analytics screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal('fleet', 'Chargeback Analytics Flow')">
+          <button class="video-trigger compact" type="button" onclick="openModal('fleet', 'Chargeback Analytics Flow', this)">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -277,7 +277,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime provider bootstrap screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal('byok', 'Provider Bootstrap Flow')">
+          <button class="video-trigger compact" type="button" onclick="openModal('byok', 'Provider Bootstrap Flow', this)">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -307,7 +307,7 @@ description: Sovereign Streaming Platform.
             alt="Streamtime enterprise integration screen"
             class="screenshot editable"
           />
-          <button class="video-trigger compact" type="button" onclick="openModal('settings-page', 'BYO-everything')">
+          <button class="video-trigger compact" type="button" onclick="openModal('settings-page', 'BYO-everything', this)">
             <span class="play-icon" aria-hidden="true"></span>
             <span>Watch flow</span>
           </button>
@@ -429,12 +429,21 @@ description: Sovereign Streaming Platform.
     return /^[a-zA-Z0-9_-]+$/.test(name) ? name : fallback;
   }
 
-  function openModal(videoName, videoTitle) {
+  function openModal(videoName, videoTitle, trigger) {
     var name = cleanVideoName(videoName);
     var title = videoTitle || defaultVideoTitle;
     var sources = [
       { src: videoBasePath + name + ".webm", type: "video/webm" }
     ];
+    var posterUrl = "{{ site.baseurl }}/images/osk-strimzi.png";
+
+    if (trigger) {
+      var popout = trigger.closest(".media-popout");
+      var img = popout && popout.querySelector("img");
+      if (img && img.src) {
+        posterUrl = img.src;
+      }
+    }
 
     document.getElementById("modal-video-title").textContent = title;
 
@@ -443,12 +452,14 @@ description: Sovereign Streaming Platform.
     if (window.videojs) {
       var player = videojs("modal-video");
 
+      player.poster(posterUrl);
       player.src(sources);
       if (typeof player.load === "function") {
         player.load();
       }
       player.trigger("resize");
     } else {
+      document.getElementById("modal-video").poster = posterUrl;
       document.getElementById("modal-video-webm").src = sources[0].src;
       document.getElementById("modal-video").load();
     }
