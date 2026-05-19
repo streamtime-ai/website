@@ -4,4 +4,5 @@ _site/
 .jekyll-cache/
 node_modules
 package-lock.json
-package.json
+package.json.bundle/
+vendor/
