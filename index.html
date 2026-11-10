@@ -1,15 +1,15 @@
 ---
 title: StreamTime
-description: Sovereign Streaming Platform.
+description: The sovereign real-time data platform. Kafka, stream processing and real-time analytics on your own infrastructure.
 ---
 
 <section class="hero">
   <div class="container hero-layout">
     <div class="hero-copy">
-      <p class="eyebrow editable">Sovereign Streaming Platform</p>
+      <p class="eyebrow editable">Sovereign Real-time Data Platform</p>
       <h1 class="editable">
-        Private Cloud for Real-time data, with complete data-residency and controls.<br>
-        <span class="hero-secondary-line">Bring your own infrastructure: Cloud, Data Center or Edge.</span>
+        One platform for all your real-time data, with complete data-residency and controls.<br>
+        <span class="hero-secondary-line">Streaming, stream processing and real-time analytics. Bring your own infrastructure: Cloud, Data Center or Edge.</span>
       </h1>
       <div class="cta button alt">
         <a href="{{ site.baseurl }}/contact/">Contact us for a trial</a>
@@ -26,60 +26,6 @@ description: Sovereign Streaming Platform.
 </section>
 
 <div id="features" class="content">
-  <section class="why-section">
-    <div class="container">
-      <div class="section-heading editable">
-        <p class="eyebrow">Why Streamtime</p>
-        <p>
-          In 2026, over a dozen platforms support the Kafka protocol. Choice matters:
-          fit the platform to cost, performance and software-freedom requirements.
-        </p>
-      </div>
-      <div class="card-grid pain-grid">
-        <article class="feature-card editable">
-          <span class="card-kicker">Protocol &gt; platform</span>
-          <h3>Kafka choice is still trapped behind platform decisions.</h3>
-          <p>
-            Because choice matters. Run OSS or commercial distributions on a bring-your-own-license
-            basis; mix and match as workloads evolve.
-          </p>
-        </article>
-        <article class="feature-card editable">
-          <span class="card-kicker">Pricing drag</span>
-          <h3>Managed Kafka cost escalates in every usage pattern.</h3>
-          <p>
-            Tiny, sleepy clusters pay a premium; at scale, the price becomes unpalatable.
-            In between, enterprise sales premiums still make managed Kafka expensive.
-          </p>
-        </article>
-        <article class="feature-card editable">
-          <span class="card-kicker">Enterprise friction</span>
-          <h3>Enterprise controls are bolted on after the fact.</h3>
-          <p>
-            Private networking, encryption, identity and compliance boundaries get tangled
-            with external control planes and limited server-side tuning.
-          </p>
-        </article>
-        <article class="feature-card editable">
-          <span class="card-kicker">Control risk</span>
-          <h3>Lock-in turns normal operations into services spend.</h3>
-          <p>
-            The deeper the dependency, the more every migration, optimization and enterprise ask
-            can become another professional-services conversation.
-          </p>
-        </article>
-        <article class="feature-card editable">
-          <span class="card-kicker">BYOC gap</span>
-          <h3>BYOC still leaves an operational experience gap.</h3>
-          <p>
-            The control plane remains a foreign actor in your environment, creating audit
-            risk while operators still carry much of the day-two burden.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="architecture-section">
     <div class="container">
       <div class="section-heading editable">
@@ -99,13 +45,176 @@ description: Sovereign Streaming Platform.
     </div>
   </section>
 
+  <section class="workloads-section">
+    <div class="container">
+      <div class="section-heading editable">
+        <p class="eyebrow">Multi-tenant workloads</p>
+        <h2>Private Cloud Managed Services for Streaming.</h2>
+        <p>
+          Managed services for Kafka, Flink, Kafka Streams and ClickHouse &mdash;
+          multi-tenant, on one fleet, with one identity model and one operations
+          model.
+        </p>
+      </div>
+      <div class="card-grid workload-grid">
+        <article class="feature-card workload-card editable">
+          <span class="card-kicker">Streaming</span>
+          <div class="logo-strip">
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/kafka.svg" alt="Apache Kafka" /><span class="logo-name">Apache Kafka</span></div>
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/confluent.svg" alt="Confluent Platform" /><span class="logo-name">Confluent Platform</span></div>
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/warpstream.svg" alt="WarpStream" /><span class="logo-name">WarpStream</span></div>
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/redpanda.svg" alt="Redpanda" /><span class="logo-name">Redpanda</span></div>
+          </div>
+          <p>
+            Multi-tenant virtual clusters on any distribution, with hundreds of
+            Connectors including built-in Debezium support, and MirrorMaker for
+            autonomous migrations and disaster recovery.
+          </p>
+        </article>
+        <article class="feature-card workload-card editable">
+          <span class="card-kicker">Stream Processing</span>
+          <div class="logo-strip">
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/kafka.svg" alt="Kafka Connect" /><span class="logo-name">Kafka Connect</span></div>
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/kafka.svg" alt="Kafka Streams" /><span class="logo-name">Kafka Streams</span></div>
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/flink.svg" alt="Apache Flink" /><span class="logo-name">Apache Flink</span></div>
+          </div>
+          <p>
+            Integrations and continuous transformation on the same fleet and
+            identity model, with lifecycle, upgrades and recovery handled by the
+            same platform.
+          </p>
+        </article>
+        <article class="feature-card workload-card editable">
+          <span class="card-kicker">Real-time Analytics</span>
+          <div class="logo-strip">
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/clickhouse.svg" alt="ClickHouse" /><span class="logo-name">ClickHouse</span></div>
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/iceberg.svg" alt="Apache Iceberg" /><span class="logo-name">Apache Iceberg</span></div>
+            <div class="logo-badge"><img src="{{ site.baseurl }}/images/logos/hudi.png" alt="Apache Hudi" /><span class="logo-name">Apache Hudi</span></div>
+          </div>
+          <p>
+            Analytics directly on live data, integrated with streaming and
+            processing layers under one tenancy, policy and audit model.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section>
+    <div class="container">
+      <div class="section-heading editable">
+        <p class="eyebrow">Supported infrastructure</p>
+        <h2>Bootstrap anywhere. Or bring your own Kubernetes.</h2>
+        <p>
+          Six first-class bootstrap providers, plus one-click adoption of the
+          Kubernetes estates you already operate.
+        </p>
+      </div>
+      <div class="card-grid usp-grid">
+        <article class="feature-card usp-card editable">
+          <span class="card-kicker">Bootstrap providers</span>
+          <h3>Production-grade clusters in minutes.</h3>
+          <div class="logo-grid">
+            <div class="logo-tile"><img src="{{ site.baseurl }}/images/logos/aws.svg" alt="AWS" /><span>AWS</span></div>
+            <div class="logo-tile"><img src="{{ site.baseurl }}/images/logos/azure.svg" alt="Azure" /><span>Azure</span></div>
+            <div class="logo-tile"><img src="{{ site.baseurl }}/images/logos/gcp.svg" alt="Google Cloud" /><span>Google Cloud</span></div>
+            <div class="logo-tile"><img src="{{ site.baseurl }}/images/logos/digitalocean.svg" alt="DigitalOcean" /><span>DigitalOcean</span></div>
+            <div class="logo-tile"><img src="{{ site.baseurl }}/images/logos/oracle.svg" alt="Oracle Cloud" /><span>Oracle Cloud</span></div>
+            <div class="logo-tile"><img src="{{ site.baseurl }}/images/logos/civo.svg" alt="Civo" /><span>Civo</span></div>
+          </div>
+        </article>
+        <article class="feature-card usp-card editable">
+          <span class="card-kicker">Bring your own Kubernetes</span>
+          <h3>Any Kubernetes cluster &mdash; cloud, on-prem or bare-metal.</h3>
+          <div class="logo-row">
+            <img src="{{ site.baseurl }}/images/logos/kubernetes.svg" alt="Kubernetes" />
+            <img src="{{ site.baseurl }}/images/logos/openshift.svg" alt="Red Hat OpenShift" />
+          </div>
+          <p>
+            Any CNCF-conformant cluster or OpenShift estate (1.32+), wherever it runs
+            &mdash; including on-premise and bare-metal. Just bring standard Kubernetes
+            peripherals &mdash; a load balancer and a default CSI storage class &mdash;
+            and plug your existing clusters in.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-heading editable">
+        <p class="eyebrow">Differentiation</p>
+        <h2>Why teams pick Streamtime over managed Kafka.</h2>
+        <p class="diff-hint">Hover a row for details.</p>
+      </div>
+      <div class="compare-wrap editable">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Hyperscaler</th>
+              <th>PaaS</th>
+              <th>BYOC</th>
+              <th class="streamtime-col">Streamtime</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feat"><span class="feat-name">On-prem &amp; air-gap support</span><span class="feat-info" role="button" tabindex="0" aria-label="About this row" data-desc="Connected, restricted-egress and fully air-gapped environments run the same APIs, operators and workflows &mdash; with self-healing local control planes and auditable, policy-controlled support channels.">i<span class="feat-tip">Connected, restricted-egress and fully air-gapped environments run the same APIs, operators and workflows &mdash; with self-healing local control planes and auditable, policy-controlled support channels.</span></span></td>
+              <td><span class="mark part">Partial</span></td>
+              <td><span class="mark no">No</span></td>
+              <td><span class="mark yes">Yes</span></td>
+              <td><span class="mark yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td class="feat"><span class="feat-name">Managed services with SLOs</span><span class="feat-info" role="button" tabindex="0" aria-label="About this row" data-desc="The managed-service experience without the managed-service dependency: uptime, recovery and response commitments on infrastructure you own, backed by durable workflows and zero-downtime fleet automation.">i<span class="feat-tip">The managed-service experience without the managed-service dependency: uptime, recovery and response commitments on infrastructure you own, backed by durable workflows and zero-downtime fleet automation.</span></span></td>
+              <td><span class="mark yes">Yes</span></td>
+              <td><span class="mark yes">Yes</span></td>
+              <td><span class="mark part">Partial</span></td>
+              <td><span class="mark yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td class="feat"><span class="feat-name">Migration assistance</span><span class="feat-info" role="button" tabindex="0" aria-label="About this row" data-desc="Guided migrations from existing Kafka estates with MirrorMaker-driven cutover and DR, plus a free TCO assessment with a guaranteed price reduction in writing.">i<span class="feat-tip">Guided migrations from existing Kafka estates with MirrorMaker-driven cutover and DR, plus a free TCO assessment with a guaranteed price reduction in writing.</span></span></td>
+              <td><span class="mark no">No</span></td>
+              <td><span class="mark no">No</span></td>
+              <td><span class="mark part">Partial</span></td>
+              <td><span class="mark yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td class="feat"><span class="feat-name">Expert 24&times;7 support services</span><span class="feat-info" role="button" tabindex="0" aria-label="About this row" data-desc="Silver, Gold and Platinum plans cover new deployments and existing Kafka estates, any distribution &mdash; escalating straight to engineers who operate production Kafka at scale.">i<span class="feat-tip">Silver, Gold and Platinum plans cover new deployments and existing Kafka estates, any distribution &mdash; escalating straight to engineers who operate production Kafka at scale.</span></span></td>
+              <td><span class="mark part">Partial</span></td>
+              <td><span class="mark yes">Yes</span></td>
+              <td><span class="mark part">Partial</span></td>
+              <td><span class="mark yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td class="feat"><span class="feat-name">N=1 vertical optimizations</span><span class="feat-info" role="button" tabindex="0" aria-label="About this row" data-desc="Optimized for one company, not for everyone: vertical tuning of hardware, topology, storage and runtime for your known workloads, validated by empirical benchmarks instead of capacity guesswork.">i<span class="feat-tip">Optimized for one company, not for everyone: vertical tuning of hardware, topology, storage and runtime for your known workloads, validated by empirical benchmarks instead of capacity guesswork.</span></span></td>
+              <td><span class="mark no">No</span></td>
+              <td><span class="mark no">No</span></td>
+              <td><span class="mark no">No</span></td>
+              <td><span class="mark yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td class="feat"><span class="feat-name">Adjacent data workloads</span><span class="feat-info" role="button" tabindex="0" aria-label="About this row" data-desc="Stream processing with Flink and Kafka Streams, Connect with built-in Debezium, and real-time analytics on ClickHouse and Iceberg &mdash; one fleet, identity and operations model.">i<span class="feat-tip">Stream processing with Flink and Kafka Streams, Connect with built-in Debezium, and real-time analytics on ClickHouse and Iceberg &mdash; one fleet, identity and operations model.</span></span></td>
+              <td><span class="mark part">Partial</span></td>
+              <td><span class="mark part">Partial</span></td>
+              <td><span class="mark no">No</span></td>
+              <td><span class="mark yes">Yes</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-slice">
     <div class="container flex">
       <div class="text editable">
-        <p class="eyebrow">Time to production-grade cluster</p>
-        <h2>5 minutes to a production-grade cluster, like the cloud.</h2>
+        <p class="eyebrow">Time to production-grade clusters</p>
+        <h2>5 minutes to production-grade clusters, like the cloud.</h2>
         <p>
-          Package the Kafka ecosystem in one box: Apache Kafka, Apache Flink,
+          Package the real-time ecosystem in one box: Apache Kafka, Apache Flink,
           Kafka Connect and more, delivered through a self-service workflow.
         </p>
         <p>
@@ -129,7 +238,7 @@ description: Sovereign Streaming Platform.
     </div>
   </section>
 
-  <section>
+  <section class="feature-slice">
     <div class="container flex">
       <div class="text editable">
         <p class="eyebrow">Right-sized economics</p>
@@ -159,7 +268,7 @@ description: Sovereign Streaming Platform.
     </div>
   </section>
 
-  <section>
+  <section class="feature-slice">
     <div class="container flex">
       <div class="text editable">
         <p class="eyebrow">AI-assisted SRE</p>
@@ -219,7 +328,7 @@ description: Sovereign Streaming Platform.
     </div>
   </section>
 
-  <section>
+  <section class="feature-slice">
     <div class="container flex">
       <div class="text editable">
         <p class="eyebrow">Cost attribution</p>
@@ -249,7 +358,7 @@ description: Sovereign Streaming Platform.
     </div>
   </section>
 
-  <section>
+  <section class="feature-slice">
     <div class="container flex">
       <div class="text editable">
         <p class="eyebrow">Bring your own infrastructure</p>
@@ -279,7 +388,7 @@ description: Sovereign Streaming Platform.
     </div>
   </section>
 
-  <section>
+  <section class="feature-slice">
     <div class="container flex">
       <div class="text editable">
         <p class="eyebrow">BYO-everything</p>
@@ -313,15 +422,15 @@ description: Sovereign Streaming Platform.
     <div class="container">
       <div class="section-heading editable">
         <p class="eyebrow">Why us</p>
-        <h2>Kafka expertise, enterprise operating model.</h2>
+        <h2>Real-time data expertise, enterprise operating model.</h2>
         <p>
-          Streamtime is built by people who understand real Kafka operations, not just
-          happy-path cluster provisioning.
+          Streamtime is built by people who understand real Kafka and streaming
+          operations, not just happy-path cluster provisioning.
         </p>
       </div>
       <div class="card-grid why-us-grid">
         <article class="feature-card editable">
-          <h3>Built by Kafka experts with Day 2 experience</h3>
+          <h3>Built by real-time data experts with Day 2 experience</h3>
           <p>
             We design for upgrades, rebalances, incident response, performance tuning,
             tenancy and the operational details that appear after launch.
@@ -350,10 +459,11 @@ description: Sovereign Streaming Platform.
       </div>
       <div class="card-grid usp-grid">
         <article class="feature-card usp-card editable">
-          <h3>THE most cost-efficient way to run streaming workloads.</h3>
+          <h3>The most cost-efficient way to run real-time data workloads.</h3>
           <p>
-            Run production Kafka and real-time data workloads at a fraction of public-cloud
-            managed-service cost, with granular attribution across teams and workloads.
+            Run production Kafka, Flink and real-time data workloads at a fraction of
+            public-cloud managed-service cost, with granular attribution across teams
+            and workloads.
           </p>
           <div class="button alt"><a href="{{ site.baseurl }}/contact/">Get a quote</a></div>
         </article>
@@ -370,7 +480,7 @@ description: Sovereign Streaming Platform.
 
   <section class="bottom-cta">
     <div class="text-container">
-      <p class="eyebrow editable">Sovereign Streaming Platform</p>
+      <p class="eyebrow editable">Sovereign Real-time Data Platform</p>
       <h2 class="editable"><strong>Streamtime</strong> is the real-time data management plane for teams that need cost, control and speed.</h2>
       <div class="button alt"><a href="{{ site.baseurl }}/contact/">Contact us for a trial</a></div>
     </div>

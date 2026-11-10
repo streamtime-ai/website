@@ -117,6 +117,35 @@
 	background: linear-gradient(180deg, #fff 0%, #f7fbff 100%);
 }
 
+// Compact, tighter rhythm for the alternating feature/video sections.
+.content > section.feature-slice {
+	padding: 34px 0;
+	background: #f7fbff;
+
+	.section-heading {
+		margin-bottom: 18px;
+	}
+
+	.text h2 {
+		margin-bottom: 14px;
+	}
+
+	.text p {
+		margin-bottom: 12px;
+	}
+
+	// Feature slices: align copy to the bottom of the row (media sits taller).
+	@media #{$mid-point} {
+		.container.flex {
+			align-items: flex-end;
+		}
+	}
+
+	& + section.feature-slice {
+		padding-top: 34px;
+	}
+}
+
 .section-heading {
 	margin: 0 auto 32px;
 	max-width: 860px;
