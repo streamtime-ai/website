@@ -3,13 +3,18 @@
 
 title: Streamtime
 email: info@streamtime.ai
-description: Streamtime is a universal management plane to manage your kafka clusters.
+description: "Streamtime is a sovereign real-time data platform: Kafka, stream processing and real-time analytics on your own infrastructure."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: streamtime-ai
 github_username:  streamtime-ai
 form_url: "https://script.google.com/macros/s/AKfycbyPCGRAnnJAeB4VfgwmIgm3tCQwp1FfxB_hPYCqt7NcG-ewK6ODqgbP-Pdc5mzsIH36/exec"
 captcha_site_key: "6Leaq2srAAAAAJTYz6ek7aJ_LV7qCZEeEgZxxlpd"
+
+# HubSpot forms (na3 region)
+hubspot_portal_id: "343892774"
+hubspot_region: "na3"
+hubspot_form_id: "496fc3a8-3b79-4aa2-a20e-a9ae6cd2b41f" # contact form
 
 google_analytics_key:
 google_maps_javascript_api_key:

@@ -11,115 +11,26 @@ map:
 ---
 <!-- <div class="map" id="map"></div> -->
 
-<div id="form-message" class="form-message" style="display:  block;"></div>
-<div class="contact-box">
+<div class="contact-box contact-split">
+	<div class="contact-intro">
+		<h3>Talk to a Kafka engineer, not a sales script.</h3>
+		<p>
+			Tell us about your streaming workloads and infrastructure &mdash; we'll
+			come back within one business day with a point of contact, a TCO
+			assessment offer, or both.
+		</p>
+		<ul class="contact-points">
+			<li>Free migration services with every deployment</li>
+			<li>$10,000 in Streamtime credits to get started</li>
+			<li>Guaranteed price reduction on your current spend</li>
+		</ul>
+	</div>
 
-	<form  id="contact-form" class="contact-form">
-    <label for="name">Full Name</label>
-    <input type="text" name="name" id="name" placeholder="Enter your name..." required />
-
-    <label for="phone">Phone Number</label>
-    <input type="text" name="phone" id="phone" placeholder="Enter your phone number..." required />
-
-    <label for="email">Email Address</label>
-    <input type="email" name="email" id="email" placeholder="Enter your email..." required />
-
-    <label for="company">Company Name</label>
-    <input type="text" name="company" id="company" placeholder="Enter your company name..." required />
-
-    <label for="message">Message</label>
-    <textarea name="message" id="message" placeholder="Enter your message..." required></textarea>
-    <div id="captcha-wrapper">
-      <div class="g-recaptcha" data-sitekey="{{site.captcha_site_key}}"></div>
-    </div>
-    <button type="submit" id="submit-btn">
-      <span class="btn-text">Send Message</span>
-      <span class="spinner" style="display: none;"></span>
-    </button>
-	</form>
-
-	<div class="contact-details">
-		<!-- <h3 class="editable">Address</h3> -->
-		<!-- <address><a target="_blank" href="https://www.google.com/maps/place/{{ page.map.address | url_encode }}">{{ page.map.address | replace: ", ", ", <br>" }}</a></address> -->
-
-		<h3 class="editable">Email</h3>
-		<p><a href="mailto:{{site.email}}">{{site.email}}</a></p>
+	<div class="contact-form hs-form">
+		<script src="https://js-na3.hsforms.net/forms/embed/{{ site.hubspot_portal_id }}.js" defer></script>
+		<div class="hs-form-frame"
+			data-region="{{ site.hubspot_region }}"
+			data-form-id="{{ site.hubspot_form_id }}"
+			data-portal-id="{{ site.hubspot_portal_id }}"></div>
 	</div>
 </div>
-
-
-<script>
-  document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); 
-
-    const captchaWrapper = document.getElementById("captcha-wrapper");
-    const response = grecaptcha.getResponse();
-    if (!response) {
-        event.preventDefault();
-        captchaWrapper.classList.add("error");
-        return false;
-      }
-
-    captchaWrapper.classList.remove("error");
-
-    const submitBtn = document.getElementById("submit-btn");
-    const spinner = submitBtn.querySelector(".spinner");
-    const btnText = submitBtn.querySelector(".btn-text");
-    const messageBox = document.getElementById("form-message");
-    submitBtn.disabled = true;
-    spinner.style.display = "inline-block";
-    btnText.textContent = "Sending...";
-
-
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const email = document.getElementById("email").value;
-    const company = document.getElementById("company").value;
-    const message = document.getElementById("message").value;
-   
-
-
-    const data = {
-      name: name,
-      phone: phone,
-      email: email,
-      company: company,
-      message: message
-    };
-
-    fetch("https://script.google.com/macros/s/AKfycbyUDYc0WONTqMjfwbnWk7DuuWl5Og2qyLgFVnRHbb7_v9uq_4p8gBya9USv88v2hl4l/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain",
-      },
-      body: JSON.stringify(data),
-    })
-    .then(response => {
-      
-      if(response.ok){
-      document.getElementById("contact-form").reset();
-      messageBox.textContent = "✅ Message sent successfully!";
-      messageBox.className = "form-message success";
-      messageBox.style.display = "block";
-      
-      } else{
-        throw Error("Failed to submit form")
-      }
-    })
-
-    .catch(error => {
-      console.error("Error:", error);
-      messageBox.textContent = "❌ Something went wrong. Please try again.";
-      messageBox.className = "form-message error";
-      messageBox.style.display = "block";
-    }).finally(()=>{
-      submitBtn.disabled = false;
-      spinner.style.display = "none";
-      btnText.textContent = "Send Message";
-      setTimeout(()=>messageBox.style.display="none",5000);
-    });
-  });
-</script>
-
-<!-- reCAPTCHA Script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>

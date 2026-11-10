@@ -4,11 +4,89 @@
 	height: 400px;
 }
 
+.contact-box.contact-split {
+	max-width: 1000px;
+	gap: 40px;
+	align-items: flex-start;
+
+	.contact-intro {
+		flex: 0 1 300px;
+		padding-top: 6px;
+
+		h3 {
+			color: $brand-color;
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin: 0 0 12px;
+		}
+
+		p {
+			margin-bottom: 18px;
+		}
+
+		.contact-points {
+			margin: 0;
+			padding-left: 18px;
+			color: #666;
+			font-size: .95em;
+
+			li {
+				margin-bottom: 8px;
+			}
+		}
+	}
+
+	.contact-form {
+		flex: 0 1 560px;
+		margin: 0;
+
+		// HubSpot paints its own light-gray panel inside the frame; mirror
+		// that tint on our side. The bottom space absorbs the 48px strip
+		// crop from _sass/hubspot.scss (see note there).
+		background: #f5f8fa;
+		border: 1px solid #e8edf3;
+		border-radius: 12px;
+		padding: 8px 0;
+
+		.hs-form-frame {
+			max-width: 100%;
+		}
+
+		.hs-form-frame iframe {
+			width: 100% !important;
+		}
+	}
+
+	@media (max-width: 899px) {
+		flex-direction: column;
+
+		.contact-intro, .contact-form {
+			flex: none;
+			width: 100%;
+		}
+	}
+}
+
+.contact-box.contact-single {
+	max-width: 640px;
+
+	.contact-form {
+		width: 100%;
+		margin: 0 auto;
+
+		.hs-form-frame {
+			max-width: 100%;
+		}
+	}
+}
+
 .contact-box {
 	@extend %flexbox;
 	@include flex-flow(wrap);
-	max-width: 750px;
+	max-width: 1080px;
 	margin: 0 auto;
+	gap: 24px 48px;
+	justify-content: center;
 
 	form {
 		width: 100%
@@ -18,16 +96,30 @@
 		margin: 0;
 	}
 
-	.contact-form, .contact-details  {
-		@media #{$desktop} {
-			-webkit-flex: 1;
-			flex: 1;
+	.contact-form {
+		width: 560px;
+		max-width: 100%;
+		margin: 0;
+
+		// The frame's own stylesheet (HubSpot's default design) left-aligns
+		// the form inside our wider wrapper; let it fill and center.
+		.hs-form-frame {
+			width: 100%;
+			max-width: 460px;
+			margin: 0 auto;
 		}
-		margin: 0 30px;
+
+		.hs-form-frame iframe {
+			width: 100% !important;
+		}
 	}
 
 	.contact-details {
 		font-size: .9em;
+		align-self: flex-start;
+		margin-top: 8px;
+		width: 260px;
+		max-width: 100%;
 	}
 }
 

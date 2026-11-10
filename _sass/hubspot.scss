@@ -1,0 +1,52 @@
+// HubSpot embedded forms: keep the embed visually consistent with the
+// site's own .contact-form styling. NOTE: most selectors can't cross the
+// iframe boundary - these style the wrapper and anything the embed script
+// injects outside the frame only. Field/button styling happens in the
+// HubSpot form designer.
+.hs-form {
+	.hs-form-frame {
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.hs-form-iframe {
+		border: 0;
+		width: 100%;
+	}
+
+	// Chrome rendered outside the iframe (if any).
+	.hsform-branding-control,
+	.hsform-privacy-control,
+	.hsform-marketing-messages,
+	[data-hs-form-branding] {
+		display: none !important;
+	}
+}
+
+// Hide HubSpot's bottom-of-frame privacy/branding strip. The strip renders
+// below the Submit button inside HubSpot's own gray panel. Our page cannot
+// style inside the cross-origin frame, so instead the iframe's own gray
+// panel is extended 48px below the frame (matching tint) and 48px is cropped
+// off the frame's bottom: the cropped content simply continues in the
+// extension, seamless - nothing is lost. Adjust both values together.
+iframe[src*="hsforms"],
+iframe[src*="hubspot"] {
+	margin-bottom: -48px;
+	clip-path: inset(0 0 48px 0);
+}
+
+.hs-form-frame {
+	position: relative;
+
+	// The seamless gray extension described above.
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 100%;
+		height: 48px;
+		background: #f5f8fa;
+	}
+}
+
