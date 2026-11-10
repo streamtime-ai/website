@@ -1,0 +1,105 @@
+---
+title: Whitepaper
+heading: Sovereign Streaming
+description: Why enterprises are moving streaming infrastructure back under their own control.
+layout: page
+---
+
+<div class="whitepaper-layout">
+	<div class="whitepaper-copy">
+		<h3>Cloud-like operations, on infrastructure you own &mdash; Kafka, stream processing and real-time analytics on one stack.</h3>
+		<ul class="whitepaper-toc">
+			<li>Cost: the 15&ndash;39&times; managed-service premium, and the people/licensing myth</li>
+			<li>Privacy: fixing the perimeter &mdash; private overlays, restricted egress, true air-gaps</li>
+			<li>Sovereignty: freedom to optimize vertically, freedom to switch distributions, licenses and identity</li>
+			<li>One stack: multi-tenant Kafka and Confluent, Connect with built-in Debezium, Flink, Kafka Streams, ClickHouse &mdash; one fleet, one identity, one operations model</li>
+			<li>Empirical right-sizing and AI ops &mdash; and support for the Kafka estate you already run, priced per cluster from $12,000</li>
+		</ul>
+		<p class="whitepaper-note">
+			Ready to talk it through? <a href="{{ site.baseurl }}/contact/">Contact us</a> for a
+			trial or a free TCO assessment of your existing Kafka estate &mdash; anywhere it
+			runs &mdash; with a guaranteed price reduction. Plans are on our
+			<a href="{{ site.baseurl }}/pricing/">pricing page</a>.
+		</p>
+	</div>
+
+	<div class="whitepaper-form-col">
+		<h3>Get the whitepaper</h3>
+		<div class="contact-form compact hs-form">
+			<script src="https://js-na3.hsforms.net/forms/embed/{{ site.hubspot_portal_id }}.js" defer></script>
+			<div class="hs-form-frame"
+				data-region="{{ site.hubspot_region }}"
+				data-form-id="{{ site.hubspot_wp_form_id | default: site.hubspot_form_id }}"
+				data-portal-id="{{ site.hubspot_portal_id }}"></div>
+		</div>
+		<div class="wp-download-wrap">
+			<div class="button wp-download locked" id="wp-download">
+				<a href="#" rel="nofollow" aria-disabled="true">Download the whitepaper (PDF) <span class="lock">&#128274;</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% if site.hubspot_form_id %}
+<script>
+	// Gate the direct download behind a HubSpot form submission. Unlock
+	// signals, in order of reliability: the embed script's on_form_submit
+	// hook, a post-submit redirect back to this page (no-cache so HubSpot's
+	// sessionStorage marker survives), and the client-side submission flag
+	// HubSpot records per page.
+	(function () {
+		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
+		var box = document.getElementById("wp-download");
+		var link = box.querySelector("a");
+		var unlocked = false;
+
+		function unlock() {
+			if (unlocked) return;
+			unlocked = true;
+			box.classList.remove("locked");
+			link.setAttribute("href", PDF);
+			link.removeAttribute("aria-disabled");
+			var lock = link.querySelector(".lock");
+			if (lock) lock.remove();
+		}
+
+		box.addEventListener("click", function (e) {
+			if (!unlocked) e.preventDefault();
+		});
+
+		// Returning visitor who submitted the form (submit often redirects to
+		// the form's hosted URL and back; sessionStorage survives same-tab
+		// navigations, and the embed marks the origin page).
+		try {
+			var flags = Object.keys(sessionStorage).filter(function (k) {
+				return /submitted|hsform/i.test(k) && /true/i.test(sessionStorage.getItem(k) || "");
+			});
+			if (flags.length) unlock();
+			if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") unlock();
+		} catch (e) {}
+
+		function arm() {
+			if (window.hubspot && typeof window.hubspot.on_form_submit === "function") {
+				try {
+					window.hubspot.on_form_submit(function () { unlock(); });
+				} catch (e) {}
+			}
+			// Newer embedders dispatch window/hubspot form-submitted events.
+			["form-submitted", "hsforms-form-submitted", "hubspot-formSubmitted"].forEach(function (name) {
+				try { window.addEventListener(name, unlock); } catch (e) {}
+			});
+		}
+
+		arm();
+		var tries = 0;
+		var timer = setInterval(function () {
+			arm();
+			try {
+				if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") unlock();
+			} catch (e) {}
+			if (++tries > 120) clearInterval(timer); // ~60s, then fail open
+		}, 500);
+	})();
+</script>
+{% endif %}
+

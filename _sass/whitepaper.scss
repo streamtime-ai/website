@@ -1,0 +1,143 @@
+.whitepaper-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 40px;
+	max-width: 1080px;
+	margin: 0 auto;
+
+	@media #{$mid-point} {
+		grid-template-columns: 1.15fr 1fr;
+		align-items: start;
+	}
+}
+
+.whitepaper-copy {
+	h3 {
+		color: $brand-color;
+		font-weight: 600;
+	}
+
+	.whitepaper-toc {
+		margin: 0 0 24px 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			padding: 6px 0 6px 22px;
+			position: relative;
+			color: #666;
+			font-weight: 300;
+
+			&:before {
+				content: "\2713";
+				position: absolute;
+				left: 0;
+				color: $secondary-brand-color;
+			}
+		}
+	}
+
+	.whitepaper-note {
+		margin-top: 16px;
+		font-size: 1em;
+	}
+}
+
+.whitepaper-form-col {
+	background: #f5f8fa;
+	border: 1px solid #e5eaf0;
+	border-radius: 8px;
+	padding: 26px 28px 22px;
+
+	h3 {
+		margin-top: 0;
+		color: $brand-color;
+		font-weight: 600;
+		text-align: center;
+	}
+
+	.contact-form.compact {
+		margin: 0 30px 0 0;
+		width: auto;
+
+		label {
+			font-size: .85em;
+		}
+
+		input {
+			margin-bottom: 12px;
+		}
+	}
+
+	#wp-submit-btn {
+		width: 100%;
+		color: #fff;
+		text-decoration: none;
+		padding: 10px 30px;
+		background: $brand-color;
+		border-radius: 3px;
+		border: 1px solid rgba(255, 255, 255, .5);
+		cursor: pointer;
+		transition: .2s ease-in-out;
+
+		&:hover {
+			border: 1px solid #fff;
+			background: $secondary-brand-color;
+		}
+
+		&:disabled {
+			opacity: .7;
+			cursor: default;
+		}
+	}
+
+	.whitepaper-or {
+		text-align: center;
+		font-size: .85em;
+		color: #999;
+		margin: 12px 0;
+		text-transform: uppercase;
+		letter-spacing: .08em;
+	}
+
+	.button {
+		display: block;
+		text-align: center;
+	}
+}
+
+// Gated direct-download button: sits flush under the HubSpot form card
+// (the "or" divider is gone) and matches the frame's submit button width
+// (316px centered inside HubSpot's 396px form). Subtly dimmed until the
+// form is submitted; the padlock is the only hint and it disappears on
+// unlock.
+.wp-download-wrap {
+	display: flex;
+	justify-content: center;
+	margin-top: 12px;
+
+	.button {
+		width: 316px;
+		max-width: 100%;
+
+		a {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
+
+.wp-download.locked {
+	a {
+		opacity: .72;
+		cursor: default;
+	}
+
+	.lock {
+		margin-left: 6px;
+		font-size: .85em;
+		opacity: .75;
+	}
+}
