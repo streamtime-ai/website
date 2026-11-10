@@ -19,7 +19,11 @@
 
 header {
 	color: #fff;
-	padding: 20px 0;
+	padding: 14px 0;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 1px 0 rgba(11, 35, 71, .18);
 	background: $brand-color; /* Old browsers */
 	background: linear-gradient(to bottom, $brand-color 0%, $middle-gradient-color 100%) no-repeat $brand-color;
 
@@ -70,6 +74,23 @@ header {
 
 section {
 	padding: 100px 0;
+}
+
+// Page headers (from layouts/page.html): tighter top padding, narrower
+// heading measure so long headings stay readable.
+section.page {
+	padding-top: 56px;
+
+	h2 {
+		margin: 0 auto;
+		max-width: 760px;
+	}
+
+	> .container > .subtext {
+		max-width: 640px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 section + section {
