@@ -1,0 +1,29 @@
+<div class="announcement" id="announcement" hidden>
+	<div class="container announcement-inner">
+		<p class="announcement-text">
+			<strong>New:</strong> Free TCO assessment of your existing Kafka estate &mdash; anywhere it runs &mdash; with a guaranteed price reduction.
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScPLACEHOLDER/viewform" target="_blank" rel="noopener" class="announcement-link">Contact us</a>
+			to get started. Plus, $10,000 in Streamtime credits to try Streamtime.
+		</p>
+		<button class="announcement-close" type="button" aria-label="Dismiss announcement" onclick="closeAnnouncement()">&times;</button>
+	</div>
+</div>
+<script>
+	(function () {
+		var el = document.getElementById("announcement");
+		try {
+			if (!localStorage.getItem("announcement-dismissed")) {
+				el.hidden = false;
+			}
+		} catch (e) {
+			el.hidden = false;
+		}
+	})();
+
+	function closeAnnouncement() {
+		document.getElementById("announcement").style.display = "none";
+		try {
+			localStorage.setItem("announcement-dismissed", "1");
+		} catch (e) {}
+	}
+</script>

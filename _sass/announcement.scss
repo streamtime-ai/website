@@ -1,0 +1,48 @@
+.announcement {
+	background: linear-gradient(to right, $secondary-brand-color, lighten($secondary-brand-color, 8%));
+	color: #fff;
+
+	.announcement-inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	// The site's base stylesheet sets `p { color: #666 }` for content paragraphs;
+	// scope the banner's own text colors to matching-or-higher specificity.
+	p, p strong, p a {
+		color: #fff;
+	}
+
+	p {
+		margin: 0;
+		font-size: .9em;
+		text-align: center;
+	}
+
+	p a {
+		text-decoration: underline;
+	}
+
+	.announcement-link {
+		white-space: nowrap;
+	}
+
+	.announcement-close {
+		background: none;
+		border: 0;
+		color: rgba(255, 255, 255, .8);
+		font-size: 1.3em;
+		line-height: 1;
+		padding: 0 4px;
+		cursor: pointer;
+		align-self: flex-start;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+}

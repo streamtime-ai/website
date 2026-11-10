@@ -21,6 +21,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 	</head>
 	<body>
+		{% include announcement.html %}
 		<header>
 			<div class="container">
 				<div class="company-name"><a href="{{ site.baseurl }}/">
@@ -59,5 +60,7 @@
 		<!-- videojs -->
 		<script src="{{ site.baseurl }}/assets/js/video.js"></script>
 		<!-- videojs -->
+		<!-- HubSpot form iframe re-skin (no-op when no embed present) -->
+		<script src="{{ site.baseurl }}/assets/js/hubspot-reskin.js" defer></script>
 	</body>
 </html>
