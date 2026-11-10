@@ -1,0 +1,155 @@
+.pricing-banner {
+	background: linear-gradient(to right, $brand-color, $middle-gradient-color);
+	color: #fff;
+	border-radius: 10px;
+	max-width: 1080px;
+	margin: 26px auto 0;
+	padding: 18px 34px;
+	text-align: center;
+
+	h3 {
+		margin: 0;
+		font-size: 1.2em;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+}
+
+.pricing-planes {
+	max-width: 940px;
+	margin: 0 auto;
+	padding: 26px 20px 10px;
+}
+
+.plane-cards {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+
+	@media #{$mid-point} {
+		grid-template-columns: 1fr 1fr;
+		align-items: stretch;
+	}
+}
+
+.plane-card {
+	background: #fff;
+	border: 1px solid #e8edf3;
+	border-radius: 12px;
+	padding: 28px 30px;
+	display: flex;
+	flex-direction: column;
+
+	.plane-head {
+		margin-bottom: 20px;
+
+		.plane-tag {
+			display: inline-block;
+			background: rgba(29, 114, 172, .1);
+			color: $secondary-brand-color;
+			font-size: .72em;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: .08em;
+			padding: 4px 12px;
+			border-radius: 12px;
+			margin-bottom: 10px;
+
+			&.support {
+				background: rgba(11, 35, 71, .08);
+				color: $brand-color;
+			}
+		}
+
+		h3 {
+			margin: 0 0 6px;
+			font-size: 1.3em;
+			font-weight: 700;
+			color: $brand-color;
+		}
+
+		.plane-sub {
+			margin: 0;
+			font-size: .98em;
+			color: #666;
+		}
+	}
+
+	.plane-meter {
+		list-style: none;
+		margin: auto 0 0;
+		padding: 14px 0 0;
+		border-top: 1px solid #eef2f6;
+
+		li {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 6px 14px;
+			padding: 11px 0;
+			border-bottom: 1px dashed #eef2f6;
+			font-size: .95em;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		.meter-name {
+			font-weight: 600;
+			color: $brand-color;
+			min-width: 150px;
+		}
+
+		.meter-def {
+			color: #666;
+			flex: 1;
+		}
+
+		.meter-price {
+			font-weight: 700;
+			color: $brand-color;
+			white-space: nowrap;
+
+			small {
+				font-weight: 400;
+				color: #888;
+				margin-left: 2px;
+			}
+		}
+
+		.plan-chip {
+			display: inline-block;
+			padding: 4px 14px;
+			border-radius: 16px;
+			font-weight: 700;
+			font-size: .85em;
+			color: #fff;
+
+			&.silver {
+				background: linear-gradient(to bottom, #9aa5b1, #6b7280);
+			}
+
+			&.gold {
+				background: linear-gradient(to bottom, #1d72ac, #155a89);
+			}
+
+			&.platinum {
+				background: linear-gradient(to bottom, #0b2347, #1d3c63);
+			}
+		}
+	}
+}
+
+.credits-note {
+	max-width: 680px;
+	margin: 30px auto 0;
+	text-align: center;
+	color: #777;
+	font-size: .92em;
+}
+
+.pricing-actions {
+	text-align: center;
+	margin: 24px 0 6px;
+}
