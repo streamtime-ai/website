@@ -6,6 +6,22 @@
   link: /#features
   new_window: false
   highlight: false
+- name: Whitepaper
+  link: /whitepaper/
+  new_window: false
+  highlight: false
+- name: Pricing
+  link: /pricing/
+  new_window: false
+  highlight: false
+- name: Partners
+  link: /partners/
+  new_window: false
+  highlight: false
+- name: FAQ
+  link: /faq/
+  new_window: false
+  highlight: false
 - name: Docs
   link: https://docs.streamtime.ai/
   new_window: true
