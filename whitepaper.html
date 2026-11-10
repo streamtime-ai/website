@@ -25,6 +25,23 @@ layout: page
 
 	<div class="whitepaper-form-col">
 		<h3>Get the whitepaper</h3>
+		{% if site.hubspot_form_id %}
+		<script>
+			// HubSpot's global form event, registered before the deferred
+			// embed script runs (docs require this ordering). If this embed
+			// build ever delivers it to the parent page, it unlocks instantly.
+			(function () {
+				var FORM_ID = "{{ site.hubspot_wp_form_id | default: site.hubspot_form_id }}";
+				window.addEventListener("hs-form-event:on-submission:success", function (e) {
+					try {
+						var id = e && e.detail && e.detail.formId;
+						if (id && FORM_ID && id !== FORM_ID) return;
+					} catch (err) {}
+					if (window.__stUnlock) window.__stUnlock();
+				});
+			})();
+		</script>
+		{% endif %}
 		<div class="contact-form compact hs-form">
 			<script src="https://js-na3.hsforms.net/forms/embed/{{ site.hubspot_portal_id }}.js" defer></script>
 			<div class="hs-form-frame"
@@ -42,11 +59,15 @@ layout: page
 
 {% if site.hubspot_form_id %}
 <script>
-	// Gate the direct download behind a HubSpot form submission. Unlock
-	// signals, in order of reliability: the embed script's on_form_submit
-	// hook, a post-submit redirect back to this page (no-cache so HubSpot's
-	// sessionStorage marker survives), and the client-side submission flag
-	// HubSpot records per page.
+	// Direct-download gating. This embed type (iframe forms) emits no
+	// parent-page events, so the gate's backbone is HubSpot's own
+	// post-submit redirect: set "Redirect to an external page after
+	// submit" in the form settings to
+	//     /whitepaper/?submitted=1#download
+	// and returning visitors arrive here already unlocked. Live fallbacks:
+	// the documented global event above, and HubSpot's
+	// hsFormsSubmittedOnPage flag (poll - the embed sets it via its own
+	// cross-origin storage layer, which the parent can't observe).
 	(function () {
 		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
 		var box = document.getElementById("wp-download");
@@ -61,45 +82,29 @@ layout: page
 			link.removeAttribute("aria-disabled");
 			var lock = link.querySelector(".lock");
 			if (lock) lock.remove();
+			try { sessionStorage.setItem("st_wp_unlocked", "1"); } catch (e) {}
 		}
+		window.__stUnlock = unlock;
+
+		// 1. Post-submit redirect from the form settings.
+		try { if (/[?&]submitted=1/.test(location.search)) unlock(); } catch (e) {}
+		try { if (sessionStorage.getItem("st_wp_unlocked") === "1") unlock(); } catch (e) {}
+		try { if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") unlock(); } catch (e) {}
 
 		box.addEventListener("click", function (e) {
 			if (!unlocked) e.preventDefault();
 		});
 
-		// Returning visitor who submitted the form (submit often redirects to
-		// the form's hosted URL and back; sessionStorage survives same-tab
-		// navigations, and the embed marks the origin page).
-		try {
-			var flags = Object.keys(sessionStorage).filter(function (k) {
-				return /submitted|hsform/i.test(k) && /true/i.test(sessionStorage.getItem(k) || "");
-			});
-			if (flags.length) unlock();
-			if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") unlock();
-		} catch (e) {}
-
-		function arm() {
-			if (window.hubspot && typeof window.hubspot.on_form_submit === "function") {
-				try {
-					window.hubspot.on_form_submit(function () { unlock(); });
-				} catch (e) {}
-			}
-			// Newer embedders dispatch window/hubspot form-submitted events.
-			["form-submitted", "hsforms-form-submitted", "hubspot-formSubmitted"].forEach(function (name) {
-				try { window.addEventListener(name, unlock); } catch (e) {}
-			});
-		}
-
-		arm();
+		// 2. Poll HubSpot's client-side conversion flag. The frame sets it
+		// after a successful submit (its storage is cross-origin, so the
+		// value only becomes readable through this poll).
 		var tries = 0;
-		var timer = setInterval(function () {
-			arm();
+		var poll = setInterval(function () {
 			try {
-				if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") unlock();
+				if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") { unlock(); clearInterval(poll); return; }
 			} catch (e) {}
-			if (++tries > 120) clearInterval(timer); // ~60s, then fail open
+			if (++tries > 120) clearInterval(poll); // ~60s of polling
 		}, 500);
 	})();
 </script>
 {% endif %}
-
