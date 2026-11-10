@@ -60,14 +60,13 @@ layout: page
 {% if site.hubspot_form_id %}
 <script>
 	// Direct-download gating. This embed type (iframe forms) emits no
-	// parent-page events, so the gate's backbone is HubSpot's own
-	// post-submit redirect: set "Redirect to an external page after
-	// submit" in the form settings to
-	//     /whitepaper/?submitted=1#download
-	// and returning visitors arrive here already unlocked. Live fallbacks:
-	// the documented global event above, and HubSpot's
-	// hsFormsSubmittedOnPage flag (poll - the embed sets it via its own
-	// cross-origin storage layer, which the parent can't observe).
+	// parent-page events at all (verified: no postMessage, no custom
+	// events - see the embed script internals), so the gate's backbone is
+	// HubSpot's own post-submit redirect: set "Redirect to an external
+	// page after submit" in the form settings to
+	//     /whitepaper/?submitted=1
+	// and returning visitors arrive here already unlocked. Fallbacks: the
+	// documented global event (registered above) and a 60s fail-open.
 	(function () {
 		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
 		var box = document.getElementById("wp-download");
@@ -95,16 +94,10 @@ layout: page
 			if (!unlocked) e.preventDefault();
 		});
 
-		// 2. Poll HubSpot's client-side conversion flag. The frame sets it
-		// after a successful submit (its storage is cross-origin, so the
-		// value only becomes readable through this poll).
-		var tries = 0;
-		var poll = setInterval(function () {
-			try {
-				if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") { unlock(); clearInterval(poll); return; }
-			} catch (e) {}
-			if (++tries > 120) clearInterval(poll); // ~60s of polling
-		}, 500);
+		// 2. Fail-open backstop: if the redirect wasn't configured (or a
+		// breakage prevented it), never strand the visitor - the PDF is
+		// public anyway.
+		setTimeout(function () { unlock(); }, 60000);
 	})();
 </script>
 {% endif %}
