@@ -39,7 +39,11 @@ iframe[src*="hubspot"] {
 .hs-form-frame {
 	position: relative;
 
-	// The seamless gray extension described above.
+	// The seamless gray extension described above. Kept at z-index -1 with
+	// no stacking context on the frame wrapper, so it can never paint over
+	// (or eat clicks from) content that follows in the flow - the form's
+	// panel tint already matches, so the extension only shows through where
+	// it is supposed to.
 	&::after {
 		content: "";
 		position: absolute;
@@ -48,6 +52,8 @@ iframe[src*="hubspot"] {
 		top: 100%;
 		height: 48px;
 		background: #f5f8fa;
+		z-index: -1;
+		pointer-events: none;
 	}
 }
 

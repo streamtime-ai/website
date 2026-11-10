@@ -23,7 +23,7 @@ layout: page
 		</p>
 	</div>
 
-	<div class="whitepaper-form-col">
+	<div class="whitepaper-form-col" id="download">
 		<h3>Get the whitepaper</h3>
 		{% if site.hubspot_form_id %}
 		<script>
@@ -68,36 +68,69 @@ layout: page
 	// and returning visitors arrive here already unlocked. Fallbacks: the
 	// documented global event (registered above) and a 60s fail-open.
 	(function () {
-		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
-		var box = document.getElementById("wp-download");
-		var link = box.querySelector("a");
 		var unlocked = false;
+		var ready = false;
+		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
 
-		function unlock() {
-			if (unlocked) return;
-			unlocked = true;
+		// The moment the visitor arrives having submitted (redirect param,
+		// or a previous unlock this session), mark it - the button code and
+		// the scroller below both read this.
+		try {
+			unlocked = /[?&]submitted=1/.test(location.search) ||
+				sessionStorage.getItem("st_wp_unlocked") === "1";
+		} catch (e) {}
+
+		function scrollToButton() {
+			var t = document.querySelector(".wp-download-wrap");
+			if (!t) return;
+			try { t.scrollIntoView({ block: "center", behavior: "smooth" }); }
+			catch (e) { try { t.scrollIntoView(); } catch (e2) {} }
+		}
+
+		function apply() {
+			if (!ready || !unlocked) return;
+			var box = document.getElementById("wp-download");
+			if (!box) return;
 			box.classList.remove("locked");
+			var link = box.querySelector("a");
 			link.setAttribute("href", PDF);
 			link.removeAttribute("aria-disabled");
 			var lock = link.querySelector(".lock");
 			if (lock) lock.remove();
-			try { sessionStorage.setItem("st_wp_unlocked", "1"); } catch (e) {}
+			window.__stUnlocked = true;
+			setTimeout(scrollToButton, 250);
 		}
-		window.__stUnlock = unlock;
 
-		// 1. Post-submit redirect from the form settings.
-		try { if (/[?&]submitted=1/.test(location.search)) unlock(); } catch (e) {}
-		try { if (sessionStorage.getItem("st_wp_unlocked") === "1") unlock(); } catch (e) {}
-		try { if (localStorage.getItem("hsFormsSubmittedOnPage") === "true") unlock(); } catch (e) {}
+		window.__stUnlock = function () {
+			if (unlocked) return;
+			unlocked = true;
+			try { sessionStorage.setItem("st_wp_unlocked", "1"); } catch (e) {}
+			apply();
+		};
 
-		box.addEventListener("click", function (e) {
-			if (!unlocked) e.preventDefault();
-		});
+		function init() {
+			ready = true;
+			var box = document.getElementById("wp-download");
+			if (box && !window.__stWired) {
+				window.__stWired = true;
+				box.addEventListener("click", function (e) {
+					if (!window.__stUnlocked) e.preventDefault();
+				});
+			}
+			apply();
+			// Arriving with the submit marker: make sure the download is the
+			// thing they see, wherever the button ended up in the layout.
+			if (unlocked) setTimeout(scrollToButton, 400);
+		}
 
-		// 2. Fail-open backstop: if the redirect wasn't configured (or a
-		// breakage prevented it), never strand the visitor - the PDF is
-		// public anyway.
-		setTimeout(function () { unlock(); }, 60000);
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", init);
+		} else {
+			init();
+		}
+
+		// Fail-open backstop: never strand a visitor if no signal ever fired.
+		setTimeout(function () { window.__stUnlock(); }, 60000);
 	})();
 </script>
 {% endif %}

@@ -116,6 +116,12 @@
 	justify-content: center;
 	margin-top: 12px;
 
+	// Keep the button above the HubSpot frame's gray extension overlay so
+	// it stays visible and clickable even if the frame grows taller than
+	// its wrapper (HubSpot resizes iframes asynchronously).
+	position: relative;
+	z-index: 5;
+
 	.button {
 		width: 316px;
 		max-width: 100%;
