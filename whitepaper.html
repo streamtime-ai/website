@@ -1,13 +1,14 @@
 ---
 title: Whitepaper
 heading: Sovereign Streaming
-description: Why enterprises are moving streaming infrastructure back under their own control.
+description: Two whitepapers on running real-time data infrastructure under your own control &mdash; the business case and the technical case.
 layout: page
 ---
 
 <div class="whitepaper-layout">
 	<div class="whitepaper-copy">
 		<h3>Cloud-like operations, on infrastructure you own &mdash; Kafka, stream processing and real-time analytics on one stack.</h3>
+		<p class="whitepaper-lead"><strong>Sovereign Streaming: The Enterprise Platform</strong> &mdash; the business pitch: cost leverage, security posture and operational flexibility, and what a managed-grade platform contract buys on infrastructure you own.</p>
 		<ul class="whitepaper-toc">
 			<li>Cost: the 15&ndash;39&times; managed-service premium, and the people/licensing myth</li>
 			<li>Privacy: fixing the perimeter &mdash; private overlays, restricted egress, true air-gaps</li>
@@ -15,6 +16,7 @@ layout: page
 			<li>One stack: multi-tenant Kafka and Confluent, Connect with built-in Debezium, Flink, Kafka Streams, ClickHouse &mdash; one fleet, one identity, one operations model</li>
 			<li>Empirical right-sizing and AI ops &mdash; and support for the Kafka estate you already run, priced per cluster from $12,000</li>
 		</ul>
+		<p class="whitepaper-lead"><strong>Sovereign Streaming: The Technical Case</strong> &mdash; the full technical treatment of the same arguments, section by section, free to read below.</p>
 		<p class="whitepaper-note">
 			Ready to talk it through? <a href="{{ site.baseurl }}/contact/">Contact us</a> for a
 			trial or a free TCO assessment of your existing Kafka estate &mdash; anywhere it
@@ -24,7 +26,7 @@ layout: page
 	</div>
 
 	<div class="whitepaper-form-col" id="download">
-		<h3>Get the whitepaper</h3>
+		<h3>Get the whitepapers</h3>
 		{% if site.hubspot_form_id %}
 		<script>
 			// HubSpot's global form event, registered before the deferred
@@ -51,8 +53,12 @@ layout: page
 		</div>
 		<div class="wp-download-wrap">
 			<div class="button wp-download locked" id="wp-download">
-				<a href="#" rel="nofollow" aria-disabled="true">Download the whitepaper (PDF) <span class="lock">&#128274;</span></a>
+				<a href="#" rel="nofollow" aria-disabled="true">Sovereign Streaming: The Enterprise Platform (PDF) <span class="lock">&#128274;</span></a>
 			</div>
+		</div>
+		<p class="whitepaper-or">or</p>
+		<div class="button">
+			<a href="{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf" download>Sovereign Streaming: The Technical Case (PDF)</a>
 		</div>
 	</div>
 </div>
@@ -70,7 +76,7 @@ layout: page
 	(function () {
 		var unlocked = false;
 		var ready = false;
-		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
+		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming-architecture.pdf";
 
 		// The moment the visitor arrives having submitted (redirect param,
 		// or a previous unlock this session), mark it - the button code and
