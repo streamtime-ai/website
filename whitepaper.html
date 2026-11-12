@@ -8,7 +8,7 @@ layout: page
 <div class="whitepaper-layout">
 	<div class="whitepaper-copy">
 		<h3>Cloud-like operations, on infrastructure you own &mdash; Kafka, stream processing and real-time analytics on one stack.</h3>
-		<p class="whitepaper-lead"><strong>Sovereign Streaming: The Enterprise Platform</strong> &mdash; the business pitch: cost leverage, security posture and operational flexibility, and what a managed-grade platform contract buys on infrastructure you own.</p>
+		<p class="whitepaper-lead"><strong>Sovereign Streaming: The Technical Case</strong> &mdash; the full technical treatment: context, economics, security and control, one stack, and agentic operations, section by section. Free to read below.</p>
 		<ul class="whitepaper-toc">
 			<li>Cost: the 15&ndash;39&times; managed-service premium, and the people/licensing myth</li>
 			<li>Privacy: fixing the perimeter &mdash; private overlays, restricted egress, true air-gaps</li>
@@ -16,7 +16,6 @@ layout: page
 			<li>One stack: multi-tenant Kafka and Confluent, Connect with built-in Debezium, Flink, Kafka Streams, ClickHouse &mdash; one fleet, one identity, one operations model</li>
 			<li>Empirical right-sizing and AI ops &mdash; and support for the Kafka estate you already run, priced per cluster from $12,000</li>
 		</ul>
-		<p class="whitepaper-lead"><strong>Sovereign Streaming: The Technical Case</strong> &mdash; the full technical treatment of the same arguments, section by section, free to read below.</p>
 		<p class="whitepaper-note">
 			Ready to talk it through? <a href="{{ site.baseurl }}/contact/">Contact us</a> for a
 			trial or a free TCO assessment of your existing Kafka estate &mdash; anywhere it
@@ -53,12 +52,12 @@ layout: page
 		</div>
 		<div class="wp-download-wrap">
 			<div class="button wp-download locked" id="wp-download">
-				<a href="#" rel="nofollow" aria-disabled="true">Sovereign Streaming: The Enterprise Platform (PDF) <span class="lock">&#128274;</span></a>
+				<a href="#" rel="nofollow" aria-disabled="true">Get the Enterprise Platform deck (PDF) <span class="lock">&#128274;</span></a>
 			</div>
 		</div>
 		<p class="whitepaper-or">or</p>
 		<div class="button">
-			<a href="{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf" download>Sovereign Streaming: The Technical Case (PDF)</a>
+			<a href="{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf" download>Read the Technical Case (PDF)</a>
 		</div>
 	</div>
 </div>
@@ -71,12 +70,30 @@ layout: page
 	// HubSpot's own post-submit redirect: set "Redirect to an external
 	// page after submit" in the form settings to
 	//     /whitepaper/?submitted=1
-	// and returning visitors arrive here already unlocked. Fallbacks: the
-	// documented global event (registered above) and a 60s fail-open.
+	// (optionally plus the role, see below) and returning visitors arrive
+	// here already unlocked. Fallbacks: the documented global event
+	// (registered above) and a 60s fail-open.
+	//
+	// Role-based variant: if the form's role dropdown has the option "Tech
+	// leadership" and the redirect carries it (a ?role=... parameter -
+	// HubSpot only appends the submission id by default, so either add the
+	// role as a hidden field with a URL-variable default, or let the
+	// follow-up email pick the variant), tech leadership get the
+	// Enterprise Platform deck and everyone else gets the Technical Case.
+	// No role parameter? Behaviour is unchanged: Enterprise Platform for
+	// all submitters.
 	(function () {
 		var unlocked = false;
 		var ready = false;
-		var PDF = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming-architecture.pdf";
+		var PDF_TECH = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
+		var PDF_BIZ = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming-architecture.pdf";
+		// Default: business pitch. If the redirect tells us the submitter
+		// picked "Tech leadership" in the role field, they get the
+		// technical paper instead.
+		var PDF = PDF_BIZ;
+		try {
+			if (/[?&]role=tech[-_ ]?leadership/i.test(location.search)) PDF = PDF_TECH;
+		} catch (e) {}
 
 		// The moment the visitor arrives having submitted (redirect param,
 		// or a previous unlock this session), mark it - the button code and
