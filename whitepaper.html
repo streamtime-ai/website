@@ -52,12 +52,8 @@ layout: page
 		</div>
 		<div class="wp-download-wrap">
 			<div class="button wp-download locked" id="wp-download">
-				<a href="#" rel="nofollow" aria-disabled="true">Get the Enterprise Platform deck (PDF) <span class="lock">&#128274;</span></a>
+				<a href="#" rel="nofollow" aria-disabled="true"><span class="wp-label">Download the whitepaper (PDF)</span> <span class="lock">&#128274;</span></a>
 			</div>
-		</div>
-		<p class="whitepaper-or">or</p>
-		<div class="button">
-			<a href="{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf" download>Read the Technical Case (PDF)</a>
 		</div>
 	</div>
 </div>
@@ -74,25 +70,43 @@ layout: page
 	// here already unlocked. Fallbacks: the documented global event
 	// (registered above) and a 60s fail-open.
 	//
-	// Role-based variant: if the form's role dropdown has the option "Tech
-	// leadership" and the redirect carries it (a ?role=... parameter -
-	// HubSpot only appends the submission id by default, so either add the
-	// role as a hidden field with a URL-variable default, or let the
-	// follow-up email pick the variant), tech leadership get the
-	// Enterprise Platform deck and everyone else gets the Technical Case.
-	// No role parameter? Behaviour is unchanged: Enterprise Platform for
-	// all submitters.
+	// Role-based variant: the form's role dropdown ("What describes your
+	// role best?", contact property hs_role) decides which paper the
+	// unlocked button serves - technical roles (Engineering, Information
+	// Technology, Product, Design) get the Technical Case, everyone else
+	// the Enterprise Platform deck. The page sees the role through the
+	// redirect URL: HubSpot appends hidden-field values as query
+	// parameters, so add a hidden field to the form named "role" whose
+	// default value is the hs_role property variable (in the form
+	// designer's default-value field) and the split activates. (If
+	// interpolating the variable renders blank on your plan, use a
+	// workflow branch to email the second link instead - the page's
+	// default stays the Enterprise Platform deck.) No role parameter?
+	// Enterprise Platform for all submitters.
 	(function () {
 		var unlocked = false;
 		var ready = false;
 		var PDF_TECH = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming.pdf";
 		var PDF_BIZ = "{{ site.baseurl }}/assets/whitepapers/streamtime-sovereign-streaming-architecture.pdf";
-		// Default: business pitch. If the redirect tells us the submitter
-		// picked "Tech leadership" in the role field, they get the
-		// technical paper instead.
+		// Role-based delivery: the form's role dropdown ("What describes
+		// your role best?", contact property hs_role) decides which paper
+		// the unlocked button serves - technical roles (Engineering,
+		// Information Technology, Product, Design) get the Technical
+		// Case, everyone else gets the Enterprise Platform deck. The
+		// split only actually branches when the redirect carries the
+		// role (see the hidden-field note above); without it, every
+		// submitter gets the Enterprise Platform deck.
 		var PDF = PDF_BIZ;
+		var TITLE = "Sovereign Streaming: The Enterprise Platform";
 		try {
-			if (/[?&]role=tech[-_ ]?leadership/i.test(location.search)) PDF = PDF_TECH;
+			var m = location.search.match(/[?&]role=([^&]+)/i);
+			if (m) {
+				var role = decodeURIComponent(m[1].replace(/\+/g, " ")).toLowerCase();
+				if (/engineer|information technology|^\s*it\s*$|product|design/.test(role)) {
+					PDF = PDF_TECH;
+					TITLE = "Sovereign Streaming: The Technical Case";
+				}
+			}
 		} catch (e) {}
 
 		// The moment the visitor arrives having submitted (redirect param,
@@ -118,6 +132,8 @@ layout: page
 			var link = box.querySelector("a");
 			link.setAttribute("href", PDF);
 			link.removeAttribute("aria-disabled");
+			var label = box.querySelector(".wp-label");
+			if (label) label.textContent = TITLE + " (PDF)";
 			var lock = link.querySelector(".lock");
 			if (lock) lock.remove();
 			window.__stUnlocked = true;
