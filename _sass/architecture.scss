@@ -1,0 +1,315 @@
+// Home-page architecture diagram (_includes/architecture-diagram.html).
+
+$arch-navy: $brand-color;
+$arch-blue: $secondary-brand-color;
+$arch-line: #c4d2e0;
+$arch-muted: #5f6b7a;
+$arch-stream: #1d72ac;
+$arch-process: #13866f;
+$arch-analytics: #6b4fbb;
+$arch-hot: #e8414f;
+
+.arch {
+	margin: 0;
+}
+
+// Keep the diagram legible on phones: scroll sideways instead of shrinking.
+.arch-scroll {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.arch-svg {
+	display: block;
+	width: 100%;
+	min-width: 880px;
+	height: auto;
+	font-family: inherit;
+
+	text {
+		font-family: inherit;
+		fill: $arch-navy;
+		font-size: 13.5px;
+	}
+}
+
+.arch-kicker {
+	font-size: 11px !important;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	fill: $arch-muted !important;
+}
+
+.arch-iface {
+	rect {
+		fill: #fff;
+		stroke: $arch-line;
+	}
+
+	text {
+		text-anchor: middle;
+		font-weight: 600;
+	}
+}
+
+.arch-wire path {
+	fill: none;
+	stroke: $arch-blue;
+	stroke-width: 1.5;
+}
+
+.arch-arrowhead {
+	fill: $arch-blue;
+}
+
+.arch-mgmt {
+	fill: $arch-navy;
+}
+
+.arch-mgmt-title {
+	fill: #fff !important;
+	font-weight: 700;
+	font-size: 15px !important;
+}
+
+.arch-api {
+	fill: $arch-blue;
+}
+
+.arch-api-label {
+	fill: #fff !important;
+	font-weight: 700;
+	font-size: 13px !important;
+	text-anchor: middle;
+	letter-spacing: .04em;
+}
+
+.arch-internal path {
+	fill: none;
+	stroke: rgba(255, 255, 255, .45);
+	stroke-width: 1.5;
+}
+
+.arch-arrowhead-lt {
+	fill: rgba(255, 255, 255, .6);
+}
+
+.arch-store {
+	fill: rgba(255, 255, 255, .08);
+	stroke: rgba(255, 255, 255, .3);
+}
+
+.arch-store-top {
+	fill: #1a3a66;
+	stroke: rgba(255, 255, 255, .3);
+}
+
+.arch-store-row {
+	rect {
+		fill: rgba(255, 255, 255, .1);
+	}
+
+	text {
+		fill: rgba(255, 255, 255, .92) !important;
+		font-size: 12.5px !important;
+		text-anchor: middle;
+	}
+}
+
+.arch-comp {
+	fill: rgba(255, 255, 255, .08);
+	stroke: rgba(255, 255, 255, .3);
+}
+
+.arch-ops {
+	stroke: $arch-hot;
+	stroke-width: 1.5;
+}
+
+.arch-comp-title {
+	fill: #fff !important;
+	font-weight: 700;
+	font-size: 13.5px !important;
+	text-anchor: middle;
+}
+
+.arch-comp-sub {
+	fill: rgba(255, 255, 255, .72) !important;
+	font-size: 12px !important;
+	text-anchor: middle;
+}
+
+
+.arch-mgmt-sub {
+	fill: rgba(255, 255, 255, .7) !important;
+	font-size: 11.5px !important;
+	text-anchor: middle;
+}
+
+.arch-tunnel {
+	fill: none;
+	stroke: $arch-blue;
+	stroke-width: 2;
+	stroke-dasharray: 6 5;
+}
+
+.arch-lock-bg {
+	fill: #fff;
+	stroke: $arch-blue;
+	stroke-width: 1.5;
+}
+
+.arch-lock {
+	fill: none;
+	stroke: $arch-navy;
+	stroke-width: 1.6;
+}
+
+.arch-tunnel-label {
+	text-anchor: middle;
+	font-weight: 700;
+	font-size: 12.5px !important;
+}
+
+.arch-tunnel-sub {
+	text-anchor: middle;
+	font-size: 12px !important;
+	fill: $arch-hot !important;
+	font-weight: 600;
+}
+
+.arch-estate {
+	fill: #f7fafd;
+	stroke: $arch-navy;
+	stroke-width: 1.5;
+	stroke-dasharray: 7 5;
+}
+
+.arch-estate-title {
+	font-weight: 700;
+	font-size: 16px !important;
+}
+
+.arch-agent {
+	fill: $arch-blue;
+}
+
+.arch-agent-label {
+	fill: #fff !important;
+	font-weight: 600;
+	font-size: 12.5px !important;
+	text-anchor: middle;
+}
+
+.arch-cat {
+	--cat: #{$arch-stream};
+
+	&.arch-cat-process { --cat: #{$arch-process}; }
+	&.arch-cat-analytics { --cat: #{$arch-analytics}; }
+
+	.arch-cat-bg {
+		fill: #fff;
+		stroke: $arch-line;
+	}
+
+	.arch-cat-bar {
+		fill: var(--cat);
+	}
+
+	.arch-cat-name {
+		fill: var(--cat) !important;
+		font-weight: 800;
+		font-size: 13.5px !important;
+	}
+
+	circle {
+		fill: var(--cat);
+	}
+
+	.arch-vert {
+		stroke: var(--cat);
+		stroke-width: 2;
+	}
+}
+
+.arch-flow path {
+	stroke: $arch-blue;
+	stroke-width: 1.5;
+}
+
+.arch-platform {
+	fill: $arch-navy;
+}
+
+.arch-platform-text {
+	fill: #fff !important;
+	font-weight: 600;
+	font-size: 13px !important;
+	text-anchor: middle;
+}
+
+
+.arch-runs {
+	fill: $arch-muted !important;
+	font-size: 12.5px !important;
+	white-space: pre;
+}
+
+.arch-runs-k {
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	font-size: 11px;
+}
+
+.arch-runs-hot {
+	fill: $arch-hot;
+	font-weight: 700;
+}
+
+.arch-hint {
+	margin-top: 10px;
+	font-size: .8em;
+	color: $arch-muted;
+	text-align: center;
+
+	@media (min-width: 900px) {
+		display: none;
+	}
+}
+
+.arch-byol {
+	fill: none;
+	stroke: var(--cat);
+	stroke-dasharray: 4 3;
+}
+
+.arch-byol-text {
+	font-size: 12px !important;
+	text-anchor: middle;
+}
+
+.arch-byol-k {
+	font-weight: 700;
+	fill: var(--cat) !important;
+	letter-spacing: .08em;
+}
+
+.arch-prov text {
+	font-size: 10.5px !important;
+	fill: $arch-muted !important;
+	text-anchor: middle;
+}
+
+.arch-airgap {
+	fill: rgba($arch-hot, .1);
+	stroke: $arch-hot;
+}
+
+.arch-airgap-text {
+	fill: $arch-hot !important;
+	font-size: 11.5px !important;
+	font-weight: 700;
+	text-anchor: middle;
+}

@@ -1,7 +1,7 @@
 ---
 title: Whitepaper
 heading: Sovereign Streaming
-description: Two whitepapers on running real-time data infrastructure under your own control &mdash; the business case and the technical case.
+description: Whitepapers on running real-time data infrastructure under your own control &mdash; the business case and the technical case.
 layout: page
 ---
 
@@ -16,6 +16,9 @@ layout: page
 			<li>One stack: multi-tenant Kafka and Confluent, Connect with built-in Debezium, Flink, Kafka Streams, ClickHouse &mdash; one fleet, one identity, one operations model</li>
 			<li>Empirical right-sizing and AI ops &mdash; and support for the Kafka estate you already run, priced per cluster from $12,000</li>
 		</ul>
+		<p class="whitepaper-lead"><strong>New: Confluent Platform + Streamtime</strong> &mdash; already running Confluent Platform? How to deploy, operate and scale it as a fully managed private service: productized deployment, the TCO of self-managed, SKU-by-workload, and 24&times;7 operational ownership.
+			<a href="{{ site.baseurl }}/confluent-platform/">Read the overview</a> or
+			<a href="{{ site.baseurl }}/whitepaper/?paper=confluent#download" id="wp-pick-confluent">get the PDF</a>.</p>
 		<p class="whitepaper-note">
 			Ready to talk it through? <a href="{{ site.baseurl }}/contact/">Contact us</a> for a
 			trial or a free TCO assessment of your existing Kafka estate &mdash; anywhere it
@@ -109,6 +112,28 @@ layout: page
 			}
 		} catch (e) {}
 
+		// Explicit paper choice: /whitepaper/?paper=confluent (linked from
+		// the unlisted /confluent-platform/ landing page) serves the
+		// Confluent Platform paper regardless of role. The choice is kept
+		// in sessionStorage so it survives HubSpot's post-submit redirect,
+		// which drops our query parameters.
+		var PDF_CP = "{{ site.baseurl }}/assets/whitepapers/streamtime-confluent-platform.pdf";
+		var CP_TITLE = "Confluent Platform paper";
+		var picked = null;
+		try {
+			var pm = location.search.match(/[?&]paper=([^&]+)/i);
+			if (pm) {
+				picked = decodeURIComponent(pm[1]).toLowerCase();
+				sessionStorage.setItem("st_wp_paper", picked);
+			} else {
+				picked = sessionStorage.getItem("st_wp_paper");
+			}
+		} catch (e) {}
+		if (picked === "confluent") {
+			PDF = PDF_CP;
+			TITLE = CP_TITLE;
+		}
+
 		// The moment the visitor arrives having submitted (redirect param,
 		// or a previous unlock this session), mark it - the button code and
 		// the scroller below both read this.
@@ -150,6 +175,10 @@ layout: page
 		function init() {
 			ready = true;
 			var box = document.getElementById("wp-download");
+			if (box && picked === "confluent") {
+				var lbl = box.querySelector(".wp-label");
+				if (lbl) lbl.textContent = CP_TITLE + " (PDF)";
+			}
 			if (box && !window.__stWired) {
 				window.__stWired = true;
 				box.addEventListener("click", function (e) {

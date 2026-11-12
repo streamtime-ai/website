@@ -1,0 +1,147 @@
+<!-- Streamtime architecture, read left to right: interfaces -> management plane
+     -> bi-directional secure tunnel (or air-gap) -> private data estate.
+     Inline SVG; styles in _sass/architecture.scss. Scrolls sideways on phones. -->
+<figure class="arch">
+  <div class="arch-scroll">
+    <svg class="arch-svg" viewBox="0 0 1280 556" role="img" aria-labelledby="arch-title arch-desc">
+      <title id="arch-title">Streamtime architecture</title>
+      <desc id="arch-desc">Interfaces (Console, CLI, Terraform or Pulumi, API and MCP) call the Streamtime management plane: an API and controller layer over a state store of workload identities, fleet and workloads, a durable executor, and autonomous operations with incident response. A bi-directional secure tunnel, or a full air-gap, connects it to the Streamtime agent and operator in your private data estate, which runs streaming, stream processing and real-time analytics workloads on shared cluster services across cloud, Kubernetes and OpenShift fleets.</desc>
+      <defs>
+        <marker id="arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="arch-arrowhead" />
+        </marker>
+        <marker id="arch-arrow-lt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="arch-arrowhead-lt" />
+        </marker>
+      </defs>
+
+      <!-- Interfaces -->
+      <text x="24" y="196" class="arch-kicker">Interfaces</text>
+      <g class="arch-iface">
+        <rect x="24" y="210" width="160" height="36" rx="18" /><text x="104" y="233">Console</text>
+        <rect x="24" y="260" width="160" height="36" rx="18" /><text x="104" y="283">CLI</text>
+        <rect x="24" y="310" width="160" height="36" rx="18" /><text x="104" y="333">Terraform / Pulumi</text>
+        <rect x="24" y="360" width="160" height="36" rx="18" /><text x="104" y="383">API + MCP</text>
+      </g>
+      <g class="arch-wire">
+        <path d="M184,228 C222,228 218,303 254,303" />
+        <path d="M184,278 C222,278 218,303 254,303" />
+        <path d="M184,328 C222,328 218,303 254,303" />
+        <path d="M184,378 C222,378 218,303 254,303" marker-end="url(#arch-arrow)" />
+      </g>
+
+      <!-- Management plane -->
+      <rect x="236" y="60" width="340" height="440" rx="20" class="arch-mgmt" />
+      <text x="256" y="92" class="arch-mgmt-title">Streamtime management plane</text>
+
+      <rect x="256" y="110" width="44" height="350" rx="10" class="arch-api" />
+      <text transform="translate(283 285) rotate(-90)" class="arch-api-label">API + controllers</text>
+
+      <g class="arch-internal">
+        <path d="M302,186 L318,186" marker-end="url(#arch-arrow-lt)" marker-start="url(#arch-arrow-lt)" />
+        <path d="M302,304 L318,304" marker-end="url(#arch-arrow-lt)" marker-start="url(#arch-arrow-lt)" />
+        <path d="M302,394 L318,394" marker-end="url(#arch-arrow-lt)" marker-start="url(#arch-arrow-lt)" />
+        <path d="M438,266 L438,280" />
+        <path d="M438,326 L438,342" />
+      </g>
+
+      <!-- State store -->
+      <path d="M320,122 v128 a118,12 0 0 0 236,0 v-128" class="arch-store" />
+      <ellipse cx="438" cy="122" rx="118" ry="12" class="arch-store-top" />
+      <text x="438" y="156" class="arch-comp-title">State store</text>
+      <g class="arch-store-row">
+        <rect x="340" y="168" width="196" height="22" rx="6" /><text x="438" y="183">Workload identities</text>
+        <rect x="340" y="196" width="196" height="22" rx="6" /><text x="438" y="211">Fleet</text>
+        <rect x="340" y="224" width="196" height="22" rx="6" /><text x="438" y="239">Workloads</text>
+      </g>
+
+      <!-- Durable executor -->
+      <rect x="320" y="282" width="236" height="44" rx="10" class="arch-comp" />
+      <text x="438" y="309" class="arch-comp-title">Durable executor</text>
+
+      <!-- Autonomous operations -->
+      <rect x="320" y="342" width="236" height="104" rx="10" class="arch-comp arch-ops" />
+      <text x="438" y="372" class="arch-comp-title">Autonomous operations</text>
+      <text x="438" y="392" class="arch-comp-title">+ incident response</text>
+      <text x="438" y="420" class="arch-comp-sub">Investigate · remediate · verify</text>
+
+      <text x="406" y="484" class="arch-mgmt-sub">Hosted · self-hosted · air-gapped</text>
+
+      <!-- Bi-directional secure tunnel / air-gap -->
+      <path d="M578,285 L698,285" class="arch-tunnel" marker-start="url(#arch-arrow)" marker-end="url(#arch-arrow)" />
+      <circle cx="634" cy="285" r="15" class="arch-lock-bg" />
+      <path d="M628,286 h12 v9 h-12 z M630.5,286 v-3.5 a3.5,3.5 0 0 1 7,0 v3.5" class="arch-lock" />
+      <text x="634" y="322" class="arch-tunnel-label">Secure tunnel</text>
+      <text x="634" y="340" class="arch-tunnel-sub">or air-gapped</text>
+
+      <!-- Private data estate -->
+      <rect x="680" y="40" width="580" height="496" rx="22" class="arch-estate" />
+      <text x="704" y="74" class="arch-estate-title">Your private data estate</text>
+
+      <rect x="700" y="96" width="38" height="306" rx="10" class="arch-agent" />
+      <text transform="translate(724 249) rotate(-90)" class="arch-agent-label">Streamtime agent + operator</text>
+
+      <!-- Streaming -->
+      <g class="arch-cat arch-cat-stream">
+        <rect x="758" y="96" width="150" height="210" rx="14" class="arch-cat-bg" />
+        <rect x="758" y="96" width="150" height="5" rx="2.5" class="arch-cat-bar" />
+        <text x="774" y="130" class="arch-cat-name">Streaming</text>
+        <circle cx="778" cy="160" r="3.5" /><text x="788" y="165">Apache Kafka</text>
+        <circle cx="778" cy="186" r="3.5" /><text x="788" y="191">Tansu</text>
+        <circle cx="778" cy="212" r="3.5" /><text x="788" y="217">Leafcuttr</text>
+        <rect x="772" y="230" width="122" height="62" rx="8" class="arch-byol" />
+        <text x="833" y="252" class="arch-byol-text">Commercial</text>
+        <text x="833" y="267" class="arch-byol-text">distributions</text>
+        <text x="833" y="283" class="arch-byol-text arch-byol-k">BYOL</text>
+        <path d="M833,306 L833,352" class="arch-vert" /><circle cx="833" cy="354" r="5" />
+      </g>
+
+      <!-- Stream processing -->
+      <g class="arch-cat arch-cat-process">
+        <rect x="924" y="96" width="150" height="210" rx="14" class="arch-cat-bg" />
+        <rect x="924" y="96" width="150" height="5" rx="2.5" class="arch-cat-bar" />
+        <text x="940" y="130" class="arch-cat-name">Stream processing</text>
+        <circle cx="944" cy="160" r="3.5" /><text x="954" y="165">Kafka Connect</text>
+        <circle cx="944" cy="186" r="3.5" /><text x="954" y="191">Kafka Streams</text>
+        <circle cx="944" cy="212" r="3.5" /><text x="954" y="217">Apache Flink</text>
+        <path d="M999,306 L999,352" class="arch-vert" /><circle cx="999" cy="354" r="5" />
+      </g>
+
+      <!-- Real-time analytics -->
+      <g class="arch-cat arch-cat-analytics">
+        <rect x="1090" y="96" width="150" height="210" rx="14" class="arch-cat-bg" />
+        <rect x="1090" y="96" width="150" height="5" rx="2.5" class="arch-cat-bar" />
+        <text x="1106" y="122" class="arch-cat-name">Real-time<tspan x="1106" dy="18">analytics</tspan></text>
+        <circle cx="1110" cy="170" r="3.5" /><text x="1120" y="175">ClickHouse</text>
+        <circle cx="1110" cy="196" r="3.5" /><text x="1120" y="201">Apache Iceberg</text>
+        <circle cx="1110" cy="222" r="3.5" /><text x="1120" y="227">Apache Hudi</text>
+        <path d="M1165,306 L1165,352" class="arch-vert" /><circle cx="1165" cy="354" r="5" />
+      </g>
+
+      <g class="arch-flow">
+        <path d="M909,200 L922,200" marker-end="url(#arch-arrow)" />
+        <path d="M1075,200 L1088,200" marker-end="url(#arch-arrow)" />
+      </g>
+
+      <!-- Cluster services -->
+      <rect x="758" y="358" width="482" height="44" rx="12" class="arch-platform" />
+      <text x="999" y="385" class="arch-platform-text">Tenancy · Networking · Schema Registry · Observability · Security</text>
+
+      <!-- Fleet providers -->
+      <text x="704" y="438" class="arch-kicker">Fleet providers</text>
+      <g class="arch-prov">
+        <image href="{{ site.baseurl }}/images/logos/aws.svg" x="716" y="452" width="26" height="26" /><text x="729" y="496">AWS</text>
+        <image href="{{ site.baseurl }}/images/logos/azure.svg" x="774" y="452" width="26" height="26" /><text x="787" y="496">Azure</text>
+        <image href="{{ site.baseurl }}/images/logos/gcp.svg" x="832" y="452" width="26" height="26" /><text x="845" y="496">GCP</text>
+        <image href="{{ site.baseurl }}/images/logos/oracle.svg" x="890" y="452" width="26" height="26" /><text x="903" y="496">OCI</text>
+        <image href="{{ site.baseurl }}/images/logos/digitalocean.svg" x="948" y="452" width="26" height="26" /><text x="961" y="496">DigitalOcean</text>
+        <image href="{{ site.baseurl }}/images/logos/civo.svg" x="1006" y="452" width="26" height="26" /><text x="1019" y="496">Civo</text>
+        <image href="{{ site.baseurl }}/images/logos/kubernetes.svg" x="1064" y="452" width="26" height="26" /><text x="1077" y="496">Kubernetes</text>
+        <image href="{{ site.baseurl }}/images/logos/openshift.svg" x="1122" y="452" width="26" height="26" /><text x="1135" y="496">OpenShift</text>
+      </g>
+      <rect x="1166" y="453" width="78" height="24" rx="12" class="arch-airgap" />
+      <text x="1205" y="469" class="arch-airgap-text">Air-gapped</text>
+    </svg>
+  </div>
+  <figcaption class="arch-hint">Swipe to see the full diagram &rarr;</figcaption>
+</figure>
