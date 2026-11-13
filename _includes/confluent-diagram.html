@@ -1,0 +1,75 @@
+<!-- Confluent Platform as a workload SKU on Streamtime. Reuses the .arch-* styles
+     from _sass/architecture.scss; .cpd-* additions live there too. -->
+<figure class="arch cpd">
+  <div class="arch-scroll">
+    <svg class="arch-svg cpd-svg" viewBox="0 0 1100 430" role="img" aria-labelledby="cpd-title cpd-desc">
+      <title id="cpd-title">Confluent Platform on Streamtime</title>
+      <desc id="cpd-desc">The Streamtime management plane connects over a bi-directional secure tunnel, or runs air-gapped, to the Streamtime agent in your private data estate. The agent deploys Confluent Platform as the workload SKU on your own Confluent license, with Kafka, Schema Registry, Connect, Control Center, Cluster Linking, REST Proxy and Confluent Flink, deployed on Kubernetes with Confluent for Kubernetes or on VMs with cp-ansible in preview, plus a disaster-recovery environment linked to production. Shared cluster services cover tenancy, networking, observability and security.</desc>
+      <defs>
+        <marker id="cpd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="arch-arrowhead" />
+        </marker>
+      </defs>
+
+      <!-- Management plane -->
+      <rect x="16" y="40" width="230" height="320" rx="18" class="arch-mgmt" />
+      <text x="34" y="72" class="arch-mgmt-title">Streamtime</text>
+      <text x="34" y="91" class="arch-mgmt-title">management plane</text>
+      <g class="cpd-mgmt-item">
+        <rect x="32" y="112" width="198" height="40" rx="9" /><text x="131" y="137">API + controllers</text>
+        <rect x="32" y="162" width="198" height="40" rx="9" /><text x="131" y="187">State store</text>
+        <rect x="32" y="212" width="198" height="40" rx="9" /><text x="131" y="237">Durable executor</text>
+        <rect x="32" y="262" width="198" height="40" rx="9" class="cpd-ops" /><text x="131" y="287">AI ops + incident response</text>
+      </g>
+      <text x="131" y="338" class="arch-mgmt-sub">Hosted · self-hosted · air-gapped</text>
+
+      <!-- Estate -->
+      <rect x="360" y="16" width="724" height="398" rx="20" class="arch-estate" />
+      <text x="384" y="48" class="arch-estate-title">Your private data estate</text>
+
+      <!-- Tunnel -->
+      <path d="M248,200 L378,200" class="arch-tunnel" marker-start="url(#cpd-arrow)" marker-end="url(#cpd-arrow)" />
+      <circle cx="306" cy="200" r="15" class="arch-lock-bg" />
+      <path d="M300,201 h12 v9 h-12 z M302.5,201 v-3.5 a3.5,3.5 0 0 1 7,0 v3.5" class="arch-lock" />
+      <text x="306" y="238" class="arch-tunnel-label">Secure tunnel</text>
+      <text x="306" y="256" class="arch-tunnel-sub">or air-gapped</text>
+
+      <rect x="380" y="66" width="36" height="286" rx="10" class="arch-agent" />
+      <text transform="translate(403 209) rotate(-90)" class="arch-agent-label">Streamtime agent</text>
+
+      <!-- Confluent Platform workload (production) -->
+      <rect x="436" y="66" width="420" height="230" rx="14" class="cpd-sku" />
+      <text x="454" y="98" class="cpd-sku-title">Confluent Platform</text>
+      <rect x="704" y="82" width="136" height="24" rx="12" class="cpd-tag" />
+      <text x="772" y="98" class="cpd-tag-text">Workload SKU · BYOL</text>
+      <g class="cpd-chip">
+        <rect x="454" y="118" width="122" height="40" rx="8" /><text x="515" y="143">Kafka (KRaft)</text>
+        <rect x="585" y="118" width="122" height="40" rx="8" /><text x="646" y="143">Schema Registry</text>
+        <rect x="716" y="118" width="122" height="40" rx="8" /><text x="777" y="143">Kafka Connect</text>
+        <rect x="454" y="168" width="122" height="40" rx="8" /><text x="515" y="193">Control Center</text>
+        <rect x="585" y="168" width="122" height="40" rx="8" /><text x="646" y="193">Cluster Linking</text>
+        <rect x="716" y="168" width="122" height="40" rx="8" /><text x="777" y="193">REST Proxy</text>
+      </g>
+      <rect x="454" y="218" width="384" height="40" rx="8" class="cpd-flink" />
+      <text x="646" y="243" class="cpd-flink-text">Confluent Flink</text>
+      <text x="454" y="282" class="cpd-note">Production · your Confluent license</text>
+
+      <!-- DR environment -->
+      <path d="M858,181 L874,181" class="cpd-link" marker-start="url(#cpd-arrow)" marker-end="url(#cpd-arrow)" />
+      <rect x="876" y="66" width="190" height="230" rx="14" class="cpd-dr" />
+      <text x="971" y="124" class="cpd-dr-title">DR environment</text>
+      <text x="971" y="152" class="cpd-dr-text">Same topology,</text>
+      <text x="971" y="170" class="cpd-dr-text">networking and</text>
+      <text x="971" y="188" class="cpd-dr-text">security policy</text>
+      <rect x="931" y="222" width="80" height="26" rx="13" class="cpd-free" />
+      <text x="971" y="239" class="cpd-free-text">Free</text>
+
+      <!-- Cluster services -->
+      <rect x="436" y="312" width="630" height="40" rx="10" class="arch-platform" />
+      <text x="751" y="337" class="arch-platform-text">Tenancy · Networking · Observability · Security</text>
+
+      <text x="384" y="390" class="arch-runs"><tspan class="arch-runs-k">Deploys with</tspan>   Kubernetes via CFK · VMs via cp-ansible (limited preview) · fully <tspan class="arch-runs-hot">air-gapped</tspan></text>
+    </svg>
+  </div>
+  <figcaption class="arch-hint">Swipe to see the full diagram &rarr;</figcaption>
+</figure>

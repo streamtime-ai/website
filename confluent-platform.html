@@ -1,17 +1,17 @@
 ---
 title: Confluent Platform + Streamtime
 layout: default
-description: Streamtime brings AI ops to Confluent Platform — zero operational risk for mission-critical clusters, 24x7 support with 10-minute guaranteed incident response, free DR environments, and air-gapped support.
+description: Streamtime brings AI ops to Confluent Platform. Zero operational risk for mission-critical clusters, 24x7 support with a 10-minute guaranteed incident response, free DR environments and air-gapped support.
 ---
 
 <section class="hero cp-hero">
   <div class="container cp-container">
     <p class="eyebrow">Confluent Platform + Streamtime</p>
-    <h1>Run streaming as a platform product &mdash; for your private data estate.</h1>
+    <h1>Run streaming as a platform product for your private data estate.</h1>
     <p class="cp-hero-sub">
-      Confluent Platform brings the enterprise streaming stack. Streamtime brings AI ops and the
-      operating model that turn it into a product your teams consume &mdash; built for
-      mission-critical clusters, in the cloud, in your data center, or fully air-gapped.
+      Confluent Platform gives you the enterprise streaming stack. Streamtime adds AI ops and the
+      operating model to run it as a product your teams consume, in the cloud, in your data center
+      or fully air-gapped. It is built for mission-critical clusters.
     </p>
     <div class="cp-hero-ctas">
       <div class="cta button alt"><a href="{{ site.baseurl }}/whitepaper/?paper=confluent#download">Download the whitepaper</a></div>
@@ -57,13 +57,13 @@ description: Streamtime brings AI ops to Confluent Platform — zero operational
   <section class="cp-section">
     <div class="container cp-container">
       <p class="eyebrow">Why Streamtime</p>
-      <h2>Streaming as a platform product, not a series of projects.</h2>
+      <h2>Run Confluent Platform as a product your teams consume.</h2>
       <dl class="cp-rows cp-rows-hot">
-        <div><dt>License leverage</dt><dd>Keep your Confluent entitlements where enterprise features matter; use OSS or other SKUs everywhere else, under one operating model.</dd></div>
-        <div><dt>Deployment leverage</dt><dd>Topology, security and observability become a declarative contract, not a recurring implementation project.</dd></div>
-        <div><dt>DR included</dt><dd>Every production cluster gets its disaster-recovery environment free, carrying the same topology, networking, security policy and lifecycle intent.</dd></div>
-        <div><dt>AI ops</dt><dd>Autonomous investigations, remediation and controlled upgrades replace routine platform toil, with Streamtime owning the SLO.</dd></div>
-        <div><dt>Adoption leverage</dt><dd>Field engineering moves from platform plumbing to migrations, onboarding and performance.</dd></div>
+        <div><dt>License leverage</dt><dd>Use your Confluent entitlements where enterprise features matter, and Apache Kafka or other SKUs everywhere else, under one operating model.</dd></div>
+        <div><dt>Deployment leverage</dt><dd>Topology, security and observability are declared once and reused for every cluster you create.</dd></div>
+        <div><dt>DR included</dt><dd>Every production cluster gets a disaster-recovery environment at no extra cost, with the same topology, networking and security policy.</dd></div>
+        <div><dt>AI ops</dt><dd>Streamtime investigates, remediates and upgrades your clusters, and owns the SLO.</dd></div>
+        <div><dt>Adoption leverage</dt><dd>Your engineers spend their time on migrations, onboarding and performance work instead of platform plumbing.</dd></div>
       </dl>
     </div>
   </section>
@@ -72,18 +72,18 @@ description: Streamtime brings AI ops to Confluent Platform — zero operational
     <div class="container cp-container">
       <p class="eyebrow">AI ops for Confluent Platform</p>
       <h2>Streamtime brings AI ops to Confluent Platform.</h2>
-      <p class="cp-lead">Mission-critical clusters can&rsquo;t wait on a support case. Streamtime takes on the operational risk of running Confluent Platform &mdash; detection, diagnosis, remediation and recovery &mdash; so it doesn&rsquo;t sit with your team.</p>
+      <p class="cp-lead">Mission-critical clusters can&rsquo;t wait on a support case. Streamtime detects, diagnoses and remediates incidents, then verifies recovery, so the operational risk sits with us.</p>
       <ol class="cp-loop">
         <li>Observe</li><li>Baseline</li><li>Investigate</li><li>Remediate</li><li>Verify</li>
       </ol>
       <div class="cp-compare">
         <div>
           <h3>Product support</h3>
-          <p>You open a case, upload diagnostics, receive guidance &mdash; and your team executes and validates the fix.</p>
+          <p>You open a case and upload diagnostics. The vendor recommends a fix, and your team applies and validates it.</p>
         </div>
         <div class="cp-compare-hot">
           <h3>Streamtime AI ops</h3>
-          <p>Autonomous agents investigate the moment an incident starts. Streamtime remediates, upgrades and verifies recovery against steady-state baselines &mdash; 24&times;7, with a guaranteed 10-minute incident response.</p>
+          <p>Agents start investigating as soon as an incident opens. Streamtime remediates and verifies recovery against steady-state baselines, 24&times;7, with a guaranteed 10-minute response.</p>
         </div>
       </div>
     </div>
@@ -91,57 +91,34 @@ description: Streamtime brings AI ops to Confluent Platform — zero operational
 
   <section class="cp-section">
     <div class="container cp-container">
-      <p class="eyebrow">Business impact</p>
-      <h2>A higher return on Confluent Platform, at a fraction of the cost to run it.</h2>
-      <ul class="cp-impact">
-        <li><strong>License value:</strong> commercial entitlements are concentrated where enterprise features matter.</li>
-        <li><strong>Risk off your books:</strong> the operational risk of a complex, mission-critical workload moves to Streamtime.</li>
-        <li><strong>Estate transparency:</strong> tenancy, chargeback and capacity managed from one plane, without cluster sprawl.</li>
-        <li><strong>Faster adoption:</strong> engineering time goes to migrations and use cases, not platform plumbing.</li>
-      </ul>
+      <p class="eyebrow">Architecture</p>
+      <h2>Confluent Platform runs as a workload on Streamtime.</h2>
+      <p class="cp-lead">Your Confluent subscription stays as it is. Streamtime deploys Confluent Platform, including Confluent Flink, through its Confluent provider on your license, and operates it alongside the rest of your fleet. Kubernetes deployments use Confluent for Kubernetes (CFK). VM deployments use cp-ansible and are in limited preview.</p>
+      {% include confluent-diagram.html %}
     </div>
   </section>
 
   <section class="cp-section cp-alt">
     <div class="container cp-container">
-      <p class="eyebrow">How it fits</p>
-      <h2>Your Confluent subscription stays intact. Streamtime standardizes how it is deployed and operated.</h2>
-      <div class="cp-stack">
-        <div class="cp-stack-col">
-          <h3>Confluent Platform</h3>
-          <ul>
-            <li>Kafka, Schema Registry</li><li>Connect + connectors</li>
-            <li>Cluster Linking / MRC</li><li>RBAC, audit, Tiered Storage</li>
-          </ul>
-        </div>
-        <div class="cp-stack-arrow" aria-hidden="true">&rarr;</div>
-        <div class="cp-stack-col cp-stack-mid">
-          <h3>Streamtime</h3>
-          <ul>
-            <li>Fleet + topology model</li><li>Placement + tenancy</li>
-            <li>Lifecycle operations</li><li>MCP + agent surfaces</li>
-          </ul>
-        </div>
-        <div class="cp-stack-arrow" aria-hidden="true">&rarr;</div>
-        <div class="cp-stack-col">
-          <h3>Your estate</h3>
-          <ul>
-            <li>Cloud or data center</li><li>Kubernetes or VMs</li>
-            <li>Identity, PKI, DNS</li><li>Your security controls</li>
-          </ul>
-        </div>
-      </div>
+      <p class="eyebrow">Business impact</p>
+      <h2>A higher return on your Confluent Platform subscription.</h2>
+      <ul class="cp-impact">
+        <li><strong>License value:</strong> commercial entitlements go where enterprise features matter.</li>
+        <li><strong>Risk off your books:</strong> Streamtime carries the operational risk of a complex, mission-critical workload.</li>
+        <li><strong>Estate transparency:</strong> tenancy, chargeback and capacity are managed from one place, so clusters don&rsquo;t sprawl.</li>
+        <li><strong>Faster adoption:</strong> engineering time goes to migrations and use cases.</li>
+      </ul>
     </div>
   </section>
 
   <section class="cp-section">
     <div class="container cp-container">
       <p class="eyebrow">Air-gapped ready</p>
-      <h2>Your data estate, your boundary &mdash; including true air-gaps.</h2>
+      <h2>Connected, restricted or fully air-gapped.</h2>
       <div class="cp-modes">
         <div>
           <h3>Connected</h3>
-          <p>The management plane reaches your clusters over a secure, outbound-only tunnel. Nothing opens inbound.</p>
+          <p>The management plane reaches your clusters through a secure tunnel opened from your side. No inbound ports.</p>
         </div>
         <div>
           <h3>Restricted egress</h3>
@@ -149,18 +126,28 @@ description: Streamtime brings AI ops to Confluent Platform — zero operational
         </div>
         <div class="cp-modes-hot">
           <h3>Air-gapped</h3>
-          <p>The entire management plane runs inside your boundary, with local registries, offline bundles and self-healing control planes.</p>
+          <p>The whole management plane runs inside your boundary, with local registries, offline bundles and self-healing control planes.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="cp-section cp-alt">
+    <div class="container cp-container cp-msp">
+      <div>
+        <p class="eyebrow">For Confluent partners and MSPs</p>
+        <h2>Deliver Confluent Platform as a managed service.</h2>
+        <p>Run Confluent Platform for your customers on their infrastructure or yours. Streamtime handles deployment and Day 2 operations, and you keep the customer relationship and your SLAs.</p>
+      </div>
+      <div class="button cp-msp-btn"><a href="{{ site.baseurl }}/partners/">See the partner program</a></div>
+    </div>
+  </section>
 
   <section class="bottom-cta">
     <div class="text-container">
       <p class="eyebrow">The full picture</p>
-      <h2>Confluent Platform with AI ops &mdash; and none of the operational risk.</h2>
-      <p>The whitepaper covers productized deployment, the cost of self-managing, matching workloads to the right SKU, and the operating model in detail.</p>
+      <h2>Confluent Platform with AI ops, and the operational risk off your team.</h2>
+      <p>The whitepaper covers deployment, the cost of running Confluent Platform yourself, matching workloads to the right SKU, and the operating model.</p>
       <div class="cp-hero-ctas">
         <div class="button alt"><a href="{{ site.baseurl }}/whitepaper/?paper=confluent#download">Download the whitepaper</a></div>
         <div class="button cp-ghost"><a href="{{ site.baseurl }}/contact/">Talk to us</a></div>

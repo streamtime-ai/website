@@ -1,51 +1,47 @@
 ---
 title: FAQ
 heading: Frequently asked questions
-description: Migration, licensing, support, sovereignty and operations questions, answered.
+description: Common questions about migration, infrastructure, commercial distributions, air-gapped deployments and operations.
 ---
 <dl class="faq">
 	<div>
 		<dt>Do we have to replatform to use Streamtime?</dt>
-		<dd>No. Support plans cover existing Kafka estates as-is &mdash; managed, self-hosted, or on any distribution. Every engagement also includes free migration services and $10,000 of consulting from Kafka experts, so you can move at your own pace.</dd>
+		<dd>No. Streamtime can support your existing Kafka clusters where they run today, whether they are managed, self-hosted or on another distribution. When you are ready to move, migration is part of the engagement. The <a href="{{ site.baseurl }}/pricing/">pricing page</a> lists the support plans.</dd>
 	</div>
 	<div>
-		<dt>What infrastructure does Streamtime run on?</dt>
-		<dd>Bootstrap directly on AWS, Azure, GCP, DigitalOcean, Oracle Cloud or Civo. Or bring your own Kubernetes: any OpenShift or CNCF-conformant cluster (1.32+) with a load balancer and a default CSI storage class. Data Center and edge deployments are supported.</dd>
+		<dt>Where does Streamtime run?</dt>
+		<dd>On the major public clouds, on Kubernetes or OpenShift clusters you already operate, in your data center and at the edge. The supported providers and cluster requirements are on the <a href="{{ site.baseurl }}/#infrastructure">home page</a> and in the <a href="https://docs.streamtime.ai/" target="_blank" rel="noopener">docs</a>.</dd>
 	</div>
 	<div>
 		<dt>Which workloads are supported?</dt>
-		<dd>Multi-tenant streaming (Apache Kafka and Confluent Platform with virtual clusters, Kafka Connect with hundreds of connectors including built-in Debezium, MirrorMaker for autonomous migrations and DR), stream processing (Apache Flink, Kafka Streams) and real-time analytics (ClickHouse, Apache Iceberg compatible) &mdash; on one fleet with one identity model and one operations model.</dd>
+		<dd>Streaming, stream processing and real-time analytics. The <a href="{{ site.baseurl }}/#workloads">workloads section</a> on the home page lists the engines in each category.</dd>
 	</div>
 	<div>
-		<dt>How is Streamtime licensed?</dt>
-		<dd>By usage, not reservation. Streaming workloads are metered in Kafka Units: 1 KU = 5 MB/s write + 15 MB/s read. Apache Flink and Kafka Streams are priced from state store size and parallel processing slots actually occupied. Bring-your-own-license models apply your existing OSS or commercial agreements directly.</dd>
+		<dt>How do commercial Kafka distributions work?</dt>
+		<dd>Streamtime has providers for commercial distributions such as Confluent Platform. A provider handles deployment, configuration, upgrades and recovery for that distribution, so it runs on the same fleet, identity and operations model as Apache Kafka. Licensing is bring your own: you keep your subscription with the vendor, and Streamtime deploys and supports the distribution under that license. See <a href="{{ site.baseurl }}/confluent-platform/">Confluent Platform with Streamtime</a>.</dd>
 	</div>
 	<div>
-		<dt>What support plans are available for existing Kafka?</dt>
-		<dd>Silver ($12,000 per cluster, business-hours support), Gold ($24,000 per cluster, 24&times;7 across up to 3 environments) and Platinum (mission-critical production, engagement-specific terms). See the <a href="{{ site.baseurl }}/pricing/">pricing page</a> for details.</dd>
+		<dt>How is Confluent Platform deployed?</dt>
+		<dd>On Kubernetes, Streamtime deploys Confluent Platform with Confluent for Kubernetes (CFK), covering Kafka, Schema Registry, Connect, Control Center and Confluent Flink. Deployment on VMs uses cp-ansible; that support is limited and in preview.</dd>
 	</div>
 	<div>
 		<dt>Can Streamtime run in air-gapped environments?</dt>
-		<dd>Yes. Connected, restricted-egress and true air-gap deployments share the same APIs, operators and workflows. In a true air-gap, the entire management plane moves inside your boundary with local registries, offline bundles and self-healing control planes.</dd>
+		<dd>Yes. Connected, restricted-egress and fully air-gapped deployments use the same APIs, operators and workflows. In an air-gap, the whole management plane runs inside your boundary with local registries, offline bundles and self-healing control planes.</dd>
 	</div>
 	<div>
-		<dt>How does support work without an air-gapped environment?</dt>
-		<dd>Air-gapped deployments get an insurance-style cover model: local services designed to self-heal against known failure modes, offline bundles carrying tested fixes, and support engagements through auditable, policy-controlled artifact exchanges rather than live tunnels into your enclave.</dd>
-	</div>
-	<div>
-		<dt>Is the TCO assessment really free?</dt>
-		<dd>Yes. We assess the total cost of your existing Kafka estate &mdash; anywhere it runs &mdash; and commit to a guaranteed price reduction in writing. If our proposal cannot beat your current spend, the assessment costs you nothing. <a href="{{ site.baseurl }}/contact/">Contact us</a> to start.</dd>
+		<dt>How does support work in an air-gapped environment?</dt>
+		<dd>Local services self-heal against known failure modes, and tested fixes ship as offline bundles. Support engagements go through auditable, policy-controlled artifact exchanges instead of a live tunnel into your enclave.</dd>
 	</div>
 	<div>
 		<dt>Can AI agents operate the platform?</dt>
-		<dd>Yes. A Streamtime MCP server exposes the whole fleet &mdash; desired vs. actual state, metrics, recent changes, in-flight operations &mdash; to any MCP-capable agent, and the Streamtime AI assistant provides a purpose-built operations harness with guarded, verifiable actions.</dd>
+		<dd>Yes. The Streamtime MCP server gives any MCP-capable agent the fleet's desired and actual state, metrics, recent changes and in-flight operations. The Streamtime AI assistant adds an operations harness with guarded, verifiable actions.</dd>
 	</div>
 	<div>
 		<dt>How is capacity sized?</dt>
-		<dd>Empirically, not by rules of thumb. Clusters are benchmarked on your hardware &mdash; sustained throughput, latency envelopes and failure-mode headroom &mdash; and validated against your workload's declared intent before production use.</dd>
+		<dd>Clusters are benchmarked on your hardware for sustained throughput, latency and failure headroom, then checked against the workload's declared requirements before they go into production.</dd>
 	</div>
 	<div>
 		<dt>Where can I learn more?</dt>
-		<dd>Read the <a href="{{ site.baseurl }}/whitepaper/">Sovereign Streaming whitepaper</a>, browse <a href="https://docs.streamtime.ai/" target="_blank" rel="noopener">docs.streamtime.ai</a>, or <a href="{{ site.baseurl }}/contact/">contact us</a> for a trial.</dd>
+		<dd>Read the <a href="{{ site.baseurl }}/whitepaper/">whitepaper</a>, browse the <a href="https://docs.streamtime.ai/" target="_blank" rel="noopener">docs</a>, see <a href="{{ site.baseurl }}/pricing/">pricing</a>, or <a href="{{ site.baseurl }}/contact/">contact us</a> for a trial.</dd>
 	</div>
 </dl>

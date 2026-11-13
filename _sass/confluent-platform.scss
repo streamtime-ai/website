@@ -361,3 +361,33 @@ $cp-line: #e1e6ec;
 		}
 	}
 }
+
+.cp-section .cpd {
+	margin-top: 28px;
+}
+
+// MSP / partner call to action.
+.cp-msp {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+	align-items: center;
+
+	@media #{$desktop} {
+		grid-template-columns: 1fr auto;
+		gap: 48px;
+	}
+
+	h2 {
+		margin-bottom: 12px !important;
+	}
+
+	.cp-msp-btn {
+		margin: 0;
+
+		a {
+			display: inline-block;
+			padding: 14px 32px;
+		}
+	}
+}

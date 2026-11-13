@@ -313,3 +313,120 @@ $arch-hot: #e8414f;
 	font-weight: 700;
 	text-anchor: middle;
 }
+
+// Confluent Platform page diagram (_includes/confluent-diagram.html).
+.cpd-svg {
+	min-width: 780px;
+}
+
+.cpd-mgmt-item {
+	rect {
+		fill: rgba(255, 255, 255, .08);
+		stroke: rgba(255, 255, 255, .28);
+	}
+
+	.cpd-ops {
+		stroke: $arch-hot;
+		stroke-width: 1.5;
+	}
+
+	text {
+		fill: #fff !important;
+		font-weight: 600;
+		text-anchor: middle;
+	}
+}
+
+.cpd-sku {
+	fill: #fff;
+	stroke: $arch-stream;
+	stroke-width: 1.5;
+}
+
+.cpd-sku-bar {
+	fill: $arch-stream;
+}
+
+.cpd-sku-title {
+	font-weight: 800;
+	font-size: 16px !important;
+	fill: $arch-stream !important;
+}
+
+.cpd-tag {
+	fill: rgba($arch-stream, .1);
+}
+
+.cpd-tag-text {
+	font-size: 11.5px !important;
+	font-weight: 700;
+	fill: $arch-stream !important;
+	text-anchor: middle;
+}
+
+.cpd-chip {
+	rect {
+		fill: #f2f6fa;
+		stroke: $arch-line;
+	}
+
+	text {
+		font-size: 12.5px !important;
+		font-weight: 600;
+		text-anchor: middle;
+	}
+}
+
+.cpd-note {
+	font-size: 11.5px !important;
+	fill: $arch-muted !important;
+}
+
+.cpd-link {
+	stroke: $arch-stream;
+	stroke-width: 1.5;
+}
+
+.cpd-dr {
+	fill: #fff;
+	stroke: $arch-stream;
+	stroke-width: 1.5;
+	stroke-dasharray: 6 4;
+}
+
+.cpd-dr-title {
+	font-weight: 800;
+	fill: $arch-stream !important;
+	text-anchor: middle;
+}
+
+.cpd-dr-text {
+	font-size: 12.5px !important;
+	fill: $arch-muted !important;
+	text-anchor: middle;
+}
+
+.cpd-free {
+	fill: rgba($arch-hot, .1);
+	stroke: $arch-hot;
+}
+
+.cpd-free-text {
+	font-size: 12px !important;
+	font-weight: 700;
+	fill: $arch-hot !important;
+	text-anchor: middle;
+}
+
+.cpd-flink {
+	fill: rgba($arch-process, .1);
+	stroke: $arch-process;
+	stroke-width: 1.5;
+}
+
+.cpd-flink-text {
+	font-size: 13px !important;
+	font-weight: 700;
+	fill: $arch-process !important;
+	text-anchor: middle;
+}
